@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- 23/09/2015 (felix) Add choice to print a report from the tree view -->
+        <report id="action_report_tree" string="Picking in tree" model="stock.picking" 
+            report_type="qweb-pdf" name="mer_warehouse.report_tree" file="mer_warehouse.report_tree"/>
+
+    </data>
+</openerp>

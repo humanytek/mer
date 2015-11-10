@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 23/09/2015 (felix) Tree view, menu: Sales/Sales orders -->
+        <record id="sale_order_tree_inherit_2" model="ir.ui.view">
+            <field name="name">sale.order.tree.inherit.2</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="priority" eval="200"/>
+            <field name="arch" type="xml">
+            
+                <!-- 23/09/2015 (felix) Add field: date_commitment 
+                    30/09/2015 (felix) Modify field: date_commitment, change to be no required
+                -->
+                <xpath expr="//field[@name='date_order']" position="after">
+                    <field name="date_commitment" string="Date commitment"/>
+                </xpath>
+                
+            </field>
+        </record>
+        
+        <!-- 28/09/2015 (felix) Form view, menu: Sales/Sales orders -->
+        <record id="sale_order_form_inherit_2" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit.2</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="priority" eval="200"/>
+            <field name="arch" type="xml">
+            
+                <!-- 28/09/2015 (felix) Modify field: product_id; add domain -->
+                <xpath expr="//form/sheet/notebook/page[@string='Order Lines']/field[@name='order_line']/form[@string='Sales Order Lines']/group[1]/group[1]/field[@name='product_id']" position="replace">
+                    <field name="product_id"
+                        context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
+                        groups="base.group_user"
+                        on_change="product_id_change(parent.pricelist_id, product_id, product_uom_qty, False, product_uos_qty, False, name, parent.partner_id, False, True, parent.date_order, False, parent.fiscal_position, False, context)"
+                        domain="[('product_manager', '=', uid)]"/>
+                    <field name="customization_ids" string="Customization" groups="base.group_user,mer_sales.group_users">
+                        <tree editable="1">
+                            <field name="product_id" string="Product type"/>
+                        </tree>
+                    </field>
+                </xpath>
+                
+            </field>
+        </record>
+        
+        
+    </data>
+</openerp>
