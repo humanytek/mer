@@ -55,7 +55,7 @@
                 
                 <!-- 07/10/2015 (felix) Change field "bom_id" to be editable -->
                 <xpath expr="//form/sheet/group[1]/group[2]/field[@name='bom_id']" position="replace">
-                    <field name="bom_id" domain="['|', ('product_id','=',product_id), '&amp;', ('product_tmpl_id.product_variant_ids','=',product_id), ('product_id','=',False)]" context="{'default_product_id': product_id}" on_change="bom_id_change(bom_id)" required="1" attrs="{'readonly': [('state', 'not in', ['draft','confirmed','ready','in_production'])], 'required': 1}"/>
+                    <field name="bom_id" domain="['|', ('product_id','=',product_id), '&amp;', ('product_tmpl_id.product_variant_ids','=',product_id), ('product_id','=',False)]" context="{'default_product_id': product_id}" required="1" attrs="{'readonly': [('state', 'not in', ['draft','confirmed','ready','in_production'])], 'required': 1}"/>
                 </xpath>
                 
             </field>
