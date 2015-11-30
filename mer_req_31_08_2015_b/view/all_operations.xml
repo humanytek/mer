@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+            
+        <!-- 24/09/2015 (felix) Form view, menu: Warehouse/Operations/All Operations -->
+        <record id="view_picking_form_inherit_1" model="ir.ui.view">
+            <field name="name">view.picking.form.inherit.1</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="priority" eval="200"/>
+            <field name="arch" type="xml">
+            
+                <!-- 24/09/2015 (felix) Add field: date_commitment -->
+                <xpath expr="//form/sheet/group/group[2]/field[@name='date']" position="after">
+                    <field name="date_commitment" string="Date commitment"/>
+                </xpath>
+            
+            </field>
+        </record>
+        
+    </data>
+</openerp>

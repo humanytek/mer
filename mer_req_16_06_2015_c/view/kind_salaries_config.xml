@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 24/09/2015 (felix) Tree view, menu: Human Resources/Configuration/Kind of salaries -->
+        <record id="tree_kind_salaries" model="ir.ui.view">
+            <field name="name">tree.kind.salaries</field>
+            <field name="model">hr.salaries</field>
+            <field name="arch" type="xml">
+            
+                <tree string="Kind of salaries">
+                    <field name="name" string="Name"/>
+                    <field name="description" string="Description"/>
+                    <field name="amount" string="Amount" widget="monetary"/>
+                    <field name="frecuency_id" string="Frecuency"/>
+                </tree>
+            
+            </field>
+        </record>
+        
+        <!-- 24/09/2015 (felix) Form view, menu: Human Resources/Configuration/Kind of salaries -->
+        <record id="form_kind_salaries" model="ir.ui.view">
+            <field name="name">form.kind.salaries</field>
+            <field name="model">hr.salaries</field>
+            <field name="arch" type="xml">
+            
+                <form string="Kind of salaries" version="7.0">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" string="Name" required="1"/>
+                                <field name="description" string="Description"/>
+                            </group>
+                            <group>
+                                <field name="amount" string="Amount" required="1" widget="monetary"/>
+                                <field name="frecuency_id" string="Frecuency" domain="[('category_id.name', 'like', 'Working Time')]" required="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+                
+            </field>
+        </record>
+        
+        <!-- 24/09/2015 (felix) Action, menu: Human Resources/Configuration/Kind of salaries -->
+        <record id="action_kind_salaries" model="ir.actions.act_window">
+            <field name="name">Kind of salaries</field>
+            <field name="res_model">hr.salaries</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <!-- 24/09/2015 (felix) Menu view, menu: Human Resources/Configuration/Kind of salaries -->
+        <menuitem id="menu_kind_salaries" action="action_kind_salaries" 
+            parent="hr.menu_hr_configuration" sequence="7" groups="base.group_no_one"/>
+                
+    </data>
+</openerp>

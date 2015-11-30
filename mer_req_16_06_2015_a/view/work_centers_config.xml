@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 24/09/2015 (felix) Tree view, menu: Manufacturing/Configuration/Work centers -->
+        <record id="mrp_workcenter_form_inherit_1" model="ir.ui.view">
+            <field name="name">mrp.workcenter.form.inherit.1</field>
+            <field name="model">mrp.workcenter</field>
+            <field name="inherit_id" ref="mrp.mrp_workcenter_view"/>
+            <field name="priority" eval="200"/>
+            <field name="arch" type="xml">
+            
+                <!-- 24/09/2015 (felix) Add field "users_ids" -->
+                <xpath expr="//form/notebook/page[@string='General Information']" position="after">
+                    <page string="Users">
+                        <field name="workcenter_ids">
+                            <tree string="Users" editable="1">
+                                <field name="employee_id" string="Name" required="1" on_change="on_change_employee(employee_id)"/>
+                                <field name="job_id"/>
+                                <field name="parent_id"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+                                
+            </field>
+        </record>
+                
+    </data>
+</openerp>

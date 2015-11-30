@@ -1,0 +1,83 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#   * l10n_mx_import_info
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-11-08 03:15+0000\n"
+"PO-Revision-Date: 2013-11-12 03:31+0000\n"
+"Last-Translator: Humanytek <info@humanytek.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2014-10-07 06:57+0000\n"
+"X-Generator: Launchpad (build 17196)\n"
+
+#. module: mer_manufacturing
+#: view:mrp.production:0
+msgid "Machine"
+msgstr "Máquina"
+
+#. module: mer_manufacturing
+#: view:mrp.workcenter:0
+msgid "Users"
+msgstr "Usuarios"
+
+#. module: mer_manufacturing
+#: view:mrp.production:0
+msgid "In Machine"
+msgstr "En máquinas"
+
+#. module: mer_manufacturing
+#: view:mrp.production:0
+msgid "Machines"
+msgstr "Máquinas"
+
+#. module: mer_manufacturing
+#: view:mrp.production:0
+#: view:mrp.workcenter:0
+msgid "Turn"
+msgstr "Turno"
+
+#. module: mer_manufacturing
+#: view:turn.mrp.production:0
+msgid "Assign turn"
+msgstr "Asignar turno"
+
+#. module: mer_manufacturing
+#: view:turn.mrp.production:0
+msgid "Select a turn"
+msgstr "Seleccione un turno"
+
+#. module: mer_manufacturing
+#: view:turn.mrp.production:0
+msgid "Turn"
+msgstr "Turno"
+
+#. module: mer_manufacturing
+#: view:turn.mrp.production:0
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: mer_manufacturing
+#: model:ir.actions.act_window,name:mer_manufacturing.action_view_turn_mrp
+msgid "Assign turn in manufacturing orders"
+msgstr "Asignar turno en órdenes de producción"
+
+#. module: mer_manufacturing
+#: view:mrp.workcenter:0
+msgid "Quantification"
+msgstr "Cuantificación"
+
+#. module: mer_manufacturing
+#: view:mrp.workcenter:0
+msgid "Product"
+msgstr "Producto"
+
+#. module: mer_manufacturing
+#: view:mrp.workcenter:0
+msgid "Quantity"
+msgstr "Cantidad"
