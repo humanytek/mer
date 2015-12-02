@@ -16,68 +16,38 @@ msgstr ""
 "X-Launchpad-Export-Date: 2014-10-07 06:57+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
-#. module: mer_manufacturing
-#: view:mrp.production:0
-msgid "Machine"
-msgstr "Máquina"
+#. module: mer_req_30_06_2015_a
+#: view:mrp.product.produce:0
+msgid "Weight"
+msgstr "Peso"
 
-#. module: mer_manufacturing
-#: view:mrp.workcenter:0
-msgid "Users"
-msgstr "Usuarios"
+#. module: mer_req_30_06_2015_a
+#: view:mrp.product.produce:0
+msgid "Raw Materials Location"
+msgstr "Ubicación de origen"
 
-#. module: mer_manufacturing
-#: view:mrp.production:0
-msgid "In Machine"
-msgstr "En máquinas"
+#. module: mer_req_30_06_2015_a
+#: view:mrp.product.produce:0
+msgid "Finished Products Location"
+msgstr "Ubicación de destino"
 
-#. module: mer_manufacturing
-#: view:mrp.production:0
-msgid "Machines"
-msgstr "Máquinas"
+#. module: mer_req_30_06_2015_a
+#: view:mrp.product.produce.operators:0
+msgid "Operator"
+msgstr "Operador"
 
-#. module: mer_manufacturing
-#: view:mrp.production:0
-#: view:mrp.workcenter:0
+#. module: mer_req_30_06_2015_a
+#: view:mrp.product.produce:0
+msgid "Operators"
+msgstr "Operadores"
+
+#. module: mer_req_30_06_2015_a
+#: view:mrp.product.produce.operators:0
 msgid "Turn"
 msgstr "Turno"
 
-#. module: mer_manufacturing
-#: view:turn.mrp.production:0
-msgid "Assign turn"
-msgstr "Asignar turno"
+#. module: mer_req_30_06_2015_a
+#: view:mrp.product.produce.operators:0
+msgid "Hours"
+msgstr "Horas"
 
-#. module: mer_manufacturing
-#: view:turn.mrp.production:0
-msgid "Select a turn"
-msgstr "Seleccione un turno"
-
-#. module: mer_manufacturing
-#: view:turn.mrp.production:0
-msgid "Turn"
-msgstr "Turno"
-
-#. module: mer_manufacturing
-#: view:turn.mrp.production:0
-msgid "Cancel"
-msgstr "Cancelar"
-
-#. module: mer_manufacturing
-#: model:ir.actions.act_window,name:mer_manufacturing.action_view_turn_mrp
-msgid "Assign turn in manufacturing orders"
-msgstr "Asignar turno en órdenes de producción"
-
-#. module: mer_manufacturing
-#: view:mrp.workcenter:0
-msgid "Quantification"
-msgstr "Cuantificación"
-
-#. module: mer_manufacturing
-#: view:mrp.workcenter:0
-msgid "Product"
-msgstr "Producto"
-
-#. module: mer_manufacturing
-#: view:mrp.workcenter:0
-msgid "Quantity"
-msgstr "Cantidad"
