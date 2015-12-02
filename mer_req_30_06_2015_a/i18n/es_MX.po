@@ -16,68 +16,68 @@ msgstr ""
 "X-Launchpad-Export-Date: 2014-10-07 06:57+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
-#. module: req_16_10_2015_d
+#. module: mer_manufacturing
 #: view:mrp.production:0
 msgid "Machine"
 msgstr "Máquina"
 
-#. module: req_16_10_2015_d
+#. module: mer_manufacturing
 #: view:mrp.workcenter:0
 msgid "Users"
 msgstr "Usuarios"
 
-#. module: req_16_10_2015_d
+#. module: mer_manufacturing
 #: view:mrp.production:0
 msgid "In Machine"
 msgstr "En máquinas"
 
-#. module: req_16_10_2015_d
+#. module: mer_manufacturing
 #: view:mrp.production:0
 msgid "Machines"
 msgstr "Máquinas"
 
-#. module: req_16_10_2015_d
+#. module: mer_manufacturing
 #: view:mrp.production:0
 #: view:mrp.workcenter:0
 msgid "Turn"
 msgstr "Turno"
 
-#. module: req_16_10_2015_d
+#. module: mer_manufacturing
 #: view:turn.mrp.production:0
 msgid "Assign turn"
 msgstr "Asignar turno"
 
-#. module: req_16_10_2015_d
+#. module: mer_manufacturing
 #: view:turn.mrp.production:0
 msgid "Select a turn"
 msgstr "Seleccione un turno"
 
-#. module: req_16_10_2015_d
+#. module: mer_manufacturing
 #: view:turn.mrp.production:0
 msgid "Turn"
 msgstr "Turno"
 
-#. module: req_16_10_2015_d
+#. module: mer_manufacturing
 #: view:turn.mrp.production:0
 msgid "Cancel"
 msgstr "Cancelar"
 
-#. module: req_16_10_2015_d
-#: model:ir.actions.act_window,name:req_16_10_2015_d.action_view_turn_mrp
+#. module: mer_manufacturing
+#: model:ir.actions.act_window,name:mer_manufacturing.action_view_turn_mrp
 msgid "Assign turn in manufacturing orders"
 msgstr "Asignar turno en órdenes de producción"
 
-#. module: req_16_10_2015_d
+#. module: mer_manufacturing
 #: view:mrp.workcenter:0
 msgid "Quantification"
 msgstr "Cuantificación"
 
-#. module: req_16_10_2015_d
+#. module: mer_manufacturing
 #: view:mrp.workcenter:0
 msgid "Product"
 msgstr "Producto"
 
-#. module: req_16_10_2015_d
+#. module: mer_manufacturing
 #: view:mrp.workcenter:0
 msgid "Quantity"
 msgstr "Cantidad"

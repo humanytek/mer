@@ -19,22 +19,34 @@
                 </xpath>
                 
                 <!-- 08/10/2015 (felix) Add fields: 
-                    - turn_id
-                    - operator_id
                     - location_src_id
                     - location_dest_id
                 -->
                 <xpath expr="//form/group[1]" position="after">
                     <group>
                         <group>
-                            <field name="turn_id" string="Turn" required="1"/>
-                            <field name="operator_id" string="Operator" required="1"/>
-                        </group>
-                        <group>
                             <field name="location_src_id" string="Raw Materials Location" domain="[('usage', '=', 'internal')]" required="1"/>
                             <field name="location_dest_id" string="Finished Products Location" domain="[('usage', '=', 'internal')]" required="1"/>
                         </group>
+                        <!-- 19/10/2015 (felix) Add field: "weight" -->
+                        <group>
+                            <field name="weight" string="Weight" required="1" on_change="on_change_weight(weight,product_id)"/>
+                        </group>
                     </group>
+                    
+                    <!-- 08/10/2015 (felix) Add fields: 
+                        - turn_id
+                        - operator_id
+                    -->
+                    <separator string="Operators"/>
+                    <field name="operators_ids" string="Operators">
+                        <tree string="Operators" editable="1">
+                            <field name="operator_id" string="Operator" required="1"/>
+                            <field name="turn_id" string="Turn" required="1"/>                            
+                            <field name="hours" string="Hours" required="1" widget="float_time"/>
+                        </tree>
+                    </field>
+                    
                 </xpath>
                 
             </field>

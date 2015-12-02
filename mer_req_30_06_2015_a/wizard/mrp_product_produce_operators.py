@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
-#    
+#
 #    OpenERP, Open Source Management Solution
 #    Copyright (C) 2004-2010 Tiny SPRL (<http://tiny.be>).
 #
@@ -15,7 +15,24 @@
 #    GNU Affero General Public License for more details.
 #
 #    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.     
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-import mrp_product_produce
+import time
+
+from openerp.osv import fields, osv
+from openerp.tools.translate import _
+import openerp.addons.decimal_precision as dp
+
+class mrp_product_produce_operators_mer(osv.osv_memory):
+
+    _name = 'mrp.product.produce.operators'
+    _description = 'Product Produce Operators'
+    _columns = {
+        'turn_id': fields.many2one('resource.calendar', 'Turns'),
+        'operator_id': fields.many2one('hr.employee', 'Operator'),
+        'hours': fields.float('Hours'),
+        'operators_id': fields.many2one('mrp.product.produce', 'Operators')
+    }
+
+mrp_product_produce_operators_mer()

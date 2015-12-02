@@ -29,13 +29,13 @@ class mrp_product_produce_mer(osv.osv_memory):
     _inherit = 'mrp.product.produce'
     _description = 'Product Produce'
     _columns = {
-        'turn_id': fields.many2one('resource.calendar', 'Turns'),
-        'operator_id': fields.many2one('hr.employee', 'Operator'),
         'location_src_id': fields.many2one('stock.location', 
             'Raw Materials Location'),
         'location_dest_id': fields.many2one('stock.location', 
             'Finished Products Location'),
         'weight': fields.float('Weight', digits_compute=dp.get_precision('Product Unit of Measure')),
+        'operators_ids': fields.one2many('mrp.product.produce.operators', 
+            'operators_id', 'Operators')
     }
     
     # 19/10/2015 (felix) Method to check weight of the product

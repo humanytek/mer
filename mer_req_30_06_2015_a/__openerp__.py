@@ -19,18 +19,18 @@
 #
 ##############################################################################
 {
-    'name': 'Mercurio: req_16_10_2015_a',
+    'name': 'Mercurio: req_30_06_2015_a',
     'version': '0.1',
     'sequence': 1,
     'category': 'Custom',
     'complexity': 'easy',
-    'sumary': 'mer_req_16_10_2015_a',
+    'sumary': 'mer_req_30_06_2015_a',
     'description': """
 Customizations in Manufacturing module
 
 Details:
 --------
-* Add fields: turn_id, operator_id, location_src_id, weight, and location_dest_id in Wizard Produce in Manufacturing/Manufacturing/Manufacturing Orders
+* Add fields: turn_id, operator_id, hours, location_src_id, weight, and location_dest_id in Wizard Produce in Manufacturing/Manufacturing/Manufacturing Orders
     """,
     'author': 'Humanytek',
     'website': 'https://github.com/humanytek/mer',
@@ -38,6 +38,7 @@ Details:
         'base',
         'mrp',
         'mrp_operations',
+        'hr'
     ],
     'data': [
         # Security and groups
