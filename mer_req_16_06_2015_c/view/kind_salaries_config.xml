@@ -33,7 +33,8 @@
                             </group>
                             <group>
                                 <field name="amount" string="Amount" required="1" widget="monetary"/>
-                                <field name="frecuency_id" string="Frecuency" domain="[('category_id.name', 'like', 'Working Time')]" required="1"/>
+                                <field name="frecuency_id" string="Frecuency"  required="1"
+                                    domain="['|', ('category_id.name', 'like', 'Working Time'), ('category_id.name', 'like', 'Horario de trabajo')]"/>
                             </group>
                         </group>
                     </sheet>

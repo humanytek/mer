@@ -31,6 +31,7 @@ Customizations in Manufacturing module
 Details:
 --------
 * Add one2many field to append an user in a specific machine in Manufacturing/Configuration/Work Centers
+* Add filter in field: Responsible, it depending of the machine
     """,
     'author': 'Humanytek',
     'website': 'https://github.com/humanytek/mer',
@@ -38,7 +39,7 @@ Details:
         'base',
         'mrp',
         'mrp_operations',
-        'hr'
+        'hr',
     ],
     'data': [
         # Security and groups
@@ -46,6 +47,7 @@ Details:
         # Data
         
         # Views
+        #'view/manufacturing_orders.xml',
         'view/work_centers_config.xml',
         
         # Other views
