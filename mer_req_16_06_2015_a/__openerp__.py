@@ -47,7 +47,6 @@ Details:
         # Data
         
         # Views
-        #'view/manufacturing_orders.xml',
         'view/work_centers_config.xml',
         
         # Other views
