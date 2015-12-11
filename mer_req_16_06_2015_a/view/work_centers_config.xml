@@ -16,8 +16,8 @@
                         <field name="workcenter_ids">
                             <tree string="Users" editable="1">
                                 <field name="employee_id" string="Name" required="1" on_change="on_change_employee(employee_id)"/>
-                                <field name="job_id"/>
-                                <field name="parent_id"/>
+                                <field name="job_id" string="Job"/>
+                                <field name="parent_id" string="Manager"/>
                             </tree>
                         </field>
                     </page>
