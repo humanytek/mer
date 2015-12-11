@@ -30,7 +30,7 @@ Customizations in Manufacturing module
 
 Details:
 --------
-* 
+* Add fields: Product, Code, and Type as Tree view for Bill of Materials
     """,
     'author': 'Humanytek',
     'website': 'https://github.com/humanytek/mer',
