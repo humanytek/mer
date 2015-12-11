@@ -1,3 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_data_manager,product_customization manager,model_product_customization,mer_sales.group_admin,1,1,1,0
-access_data_users,product_customization user,model_product_customization,mer_sales.group_users,1,1,1,0
