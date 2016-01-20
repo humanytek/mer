@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+    
+        <record id="view_product_category_form_view_inherit" model="ir.ui.view">
+            <field name="name">product.category.form</field>
+            <field name="model">product.category</field>
+            <field name="inherit_id" ref="product.product_category_form_view"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//group[@name='parent']/field[@name='type']" position="after">
+	                <group colspan="4" col="2" groups="hmtk_product_category.group_product_categ">
+	                    <field name="labor_cost" />
+		             	<label for="percentage_value" />
+		             	<div name="percentage_value" >
+		                 	<field name="percentage_value" class="oe_inline"/> %%
+		             	</div>
+		             	<field name="power_factor" />
+	                </group>
+                </xpath>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

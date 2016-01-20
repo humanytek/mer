@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+    
+        <record id="view_sale_order_form_view_inherit" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='order_line']/tree//field[@name='product_id']" position="after">
+                    <field name="product_image" string="Image" readonly="1" widget="image" options='{"preview_image": "image_medium", "size": [90, 90]}'/>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/form//div[@name='discount']" position="after">
+                	<field name="prod_is_customizable" invisible="1"/>
+                	<field name="product_image" string="Image" readonly="1" widget="image" options='{"preview_image": "image_medium", "size": [90, 90]}'/>
+                	<field name="insert_id" on_change="onchange_insert_id(insert_id)" attrs="{'invisible': [('prod_is_customizable', '=', False)]}" 
+                	domain="[('product_base_2_id', '=' , product_id)]"/>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/form//field[@name='name']" position="after">
+        	    	<div attrs="{'invisible': [('prod_is_customizable', '=', False)]}">
+	            		<label for="insert_text"/>
+		                <field name="insert_text"/>
+		            </div>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree//field[@name='price_subtotal']" position="after">
+		                <field name="insert_text" string="Descripcion Insert"/>
+                </xpath>
+            </field>
+        </record>
+        
+    </data>
+</openerp>
