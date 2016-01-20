@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <!-- 08/10/2015 (felix) Tree view, menu: Manufacturing/Manufacturing/Manufacturing orders -->
+        <record id="mrp_production_tree_inherit_1" model="ir.ui.view">
+            <field name="name">mrp.production.tree.inherit.1</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
+            <field name="priority" eval="200"/>
+            <field name="arch" type="xml">
+            
+                <!-- 08/10/2015 (felix) Add field "turn_id" -->
+                <xpath expr="//field[@name='routing_id']" position="after">
+                    <field name="turn_id" string="Turn"/>
+                </xpath>
+                
+            </field>
+        </record>
+        
+        <!-- 24/09/2015 (felix) Form view, menu: Manufacturing/Manufacturing/Manufacturing orders -->
+        <record id="mrp_production_form_inherit_1" model="ir.ui.view">
+            <field name="name">mrp.production.form.inherit.1</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="priority" eval="200"/>
+            <field name="arch" type="xml">
+            
+                <!-- 05/10/2015 (felix) Add field "turn_id" to put a specific turn -->
+                <xpath expr="//form/sheet/group[1]/group[2]/field[@name='bom_id']" position="before">
+                    <field name="turn_id" string="Turn" required="1"/>
+                </xpath>
+                
+            </field>
+        </record>
+        
+        <!-- 24/09/2015 (felix) Search view, menu: Manufacturing/Manufacturing/Manufacturing orders -->
+        <record id="view_mrp_production_filter_inherit_1" model="ir.ui.view">
+            <field name="name">view.mrp.production.filter.inherit.1</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mer_req_16_10_2015_a.view_mrp_production_filter_inherit_1"/>
+            <field name="priority" eval="200"/>
+            <field name="arch" type="xml">
+                            
+                <!-- 05/10/2015 (felix) Add filter group by "Turn" -->
+                <xpath expr="//search/group/filter[@string='Machines']" position="after">
+                    <filter string="Turn" icon="terp-go-month" domain="[]" context="{'group_by':'turn_id'}"/>
+                </xpath>
+                
+            </field>
+        </record>
+                
+    </data>
+</openerp>

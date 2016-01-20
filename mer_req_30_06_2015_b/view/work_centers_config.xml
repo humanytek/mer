@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 24/09/2015 (felix) Tree view, menu: Manufacturing/Configuration/Work centers -->
+        <record id="mrp_workcenter_form_inherit_1" model="ir.ui.view">
+            <field name="name">mrp.workcenter.form.inherit.1</field>
+            <field name="model">mrp.workcenter</field>
+            <field name="inherit_id" ref="mer_req_16_06_2015_a.mrp_workcenter_form_inherit_1"/>
+            <field name="priority" eval="200"/>
+            <field name="arch" type="xml">
+                            
+                <!-- 06/10/2015 (felix) Add field "quantification_ids" -->
+                <xpath expr="//form/notebook/page[@string='Users']" position="after">
+                    <page string="Quantification">
+                        <field name="quantification_ids">
+                            <tree string="Quantification" editable="1">
+                                <field name="product_id" string="Product"/>
+                                <field name="product_qty" string="Quantity"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+                
+            </field>
+        </record>
+                
+    </data>
+</openerp>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- 05/10/2015 (felix) Form wizard: Assign a specific turn to some manufacturing orders -->
+        <record id="view_turn_mrp" model="ir.ui.view">
+            <field name="name">view.turn.mrp</field>
+            <field name="model">turn.mrp.production</field>
+            <field name="arch" type="xml">
+            
+                <form string="Assign turn">
+                    <separator string="Select a turn"/>
+                    <group>
+                        <group>
+                            <field name="turn_id" string="Turn"/>
+                        </group>
+                        <group />
+                    </group>
+                    <footer>
+                        <button name="assign_turn" string="Assign turn" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            
+            </field>
+        </record>
+
+        <!-- 05/10/2015 (felix) Button in more: Assign a specific turn to some manufacturing orders -->
+        <act_window name="Assign turn in manufacturing orders"
+            context="{}"
+            res_model="turn.mrp.production"
+            src_model="mrp.production"
+            view_mode="form"
+            target="new"
+            multi="True"
+            key2="client_action_multi"
+            id="action_view_turn_mrp"/>
+
+    </data>
+</openerp>

@@ -1,0 +1,53 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#   * l10n_mx_import_info
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-11-08 03:15+0000\n"
+"PO-Revision-Date: 2013-11-12 03:31+0000\n"
+"Last-Translator: Humanytek <info@humanytek.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2014-10-07 06:57+0000\n"
+"X-Generator: Launchpad (build 17196)\n"
+
+#. module: mer_req_30_06_2015_a
+#: view:mrp.product.produce:0
+msgid "Weight"
+msgstr "Peso"
+
+#. module: mer_req_30_06_2015_a
+#: view:mrp.product.produce:0
+msgid "Raw Materials Location"
+msgstr "Ubicación de origen"
+
+#. module: mer_req_30_06_2015_a
+#: view:mrp.product.produce:0
+msgid "Finished Products Location"
+msgstr "Ubicación de destino"
+
+#. module: mer_req_30_06_2015_a
+#: view:mrp.product.produce.operators:0
+msgid "Operator"
+msgstr "Operador"
+
+#. module: mer_req_30_06_2015_a
+#: view:mrp.product.produce:0
+msgid "Operators"
+msgstr "Operadores"
+
+#. module: mer_req_30_06_2015_a
+#: view:mrp.product.produce.operators:0
+msgid "Turn"
+msgstr "Turno"
+
+#. module: mer_req_30_06_2015_a
+#: view:mrp.product.produce.operators:0
+msgid "Hours"
+msgstr "Horas"
+

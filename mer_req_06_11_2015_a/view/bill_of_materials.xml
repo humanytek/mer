@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 11/12/2015 (felix) Tree view, menu: Manufacturing/Products/Bill of Materials -->
+        <record id="mrp_bom_tree" model="ir.ui.view">
+            <field name="name">mrp.bom.tree</field>
+            <field name="model">mrp.bom</field>
+            <field name="priority" eval="200"/>
+            <field name="arch" type="xml">
+            
+                <!-- 11/12/2015 (felix) Add fields: 
+                    - Product
+                    - Code
+                    - BoM Type
+                -->
+                <tree string="Bill of materials">
+                    <field name="product_tmpl_id" string="Product"/>
+                    <field name="code" string="Code"/>
+                    <field name="type" string="BoM Type"/>
+                </tree>
+                
+            </field>
+        </record>
+                
+    </data>
+</openerp>

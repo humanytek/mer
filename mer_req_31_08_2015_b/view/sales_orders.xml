@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 23/09/2015 (felix) Tree view, menu: Sales/Sales orders -->
+        <record id="sale_order_tree_inherit_2" model="ir.ui.view">
+            <field name="name">sale.order.tree.inherit.2</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="priority" eval="200"/>
+            <field name="arch" type="xml">
+            
+                <!-- 23/09/2015 (felix) Add field: date_commitment 
+                    30/09/2015 (felix) Modify field: date_commitment, change to be no required
+                -->
+                <xpath expr="//field[@name='date_order']" position="after">
+                    <field name="date_commitment" string="Date commitment"/>
+                </xpath>
+                
+            </field>
+        </record>
+        
+    </data>
+</openerp>
