@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_mrp_product_produce_wizard_inherit_2" model="ir.ui.view">
+            <field name="name">view.mrp.product.produce.wizard.inherit.2</field>
+            <field name="model">mrp.product.produce</field>
+            <field name="inherit_id" ref="mer_req_30_06_2015_a.view_mrp_product_produce_wizard_inherit_1"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='location_dest_id']" position="after">
+                    <field name="user_ids" widget="many2many_tags" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='operators_ids']" position="replace">
+                    <field name="operators_ids" string="Operators">
+                        <tree string="Operators" editable="1">
+                            <field name="operator_id" string="Operator" required="1" domain="[('id', 'in', parent.user_ids and parent.user_ids[0] and parent.user_ids[0][2] or False)]"/>
+                            <field name="turn_id" string="Turn" required="1"/>                            
+                            <field name="hours" string="Hours" required="1" widget="float_time"/>
+                        </tree>
+                    </field>
+                </xpath>
+                
+            </field>
+        </record>
+
+    </data>
+</openerp>

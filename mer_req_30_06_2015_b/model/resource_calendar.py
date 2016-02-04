@@ -36,15 +36,13 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
-class mrp_workcenter_quantification_mer(osv.osv):
+class resource_calendar_mer(osv.osv):
 
-    _name = 'mrp.workcenter.quantification'
-    _description = 'Add methos and fields mrp_workcenter_quantification'
+    _inherit = 'resource.calendar'
+    _description = 'Add methos and fields resource_calendar'
     _columns = {
-        'product_id': fields.many2one('product.product', 'Product'),
-        'product_qty': fields.float('Quantity', digits=(10,2)),
-        'workcenter_id': fields.many2one('mrp.workcenter', 'Work centers'),
-        'turn_id': fields.many2one('resource.calendar', 'Turn')
+        'turn_ids': fields.one2many('mrp.workcenter.quantification', 'turn_id', 
+            'Turns'),
     }
 
-mrp_workcenter_quantification_mer()
+resource_calendar_mer()

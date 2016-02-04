@@ -31,6 +31,7 @@ Customizations in Manufacturing module
 Details:
 --------
 * Add field "quantification_ids" in Manufacturing/Configuration/Work Centers
+* Add field "turn_id" in "quantification_ids" of Manufacturing/Configuration/Work Centers
     """,
     'author': 'Humanytek',
     'website': 'https://github.com/humanytek/mer',

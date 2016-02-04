@@ -20,3 +20,4 @@
 ##############################################################################
 import mrp_workcenter
 import mrp_workcenter_quantification
+import resource_calendar

@@ -25,3 +25,8 @@ msgstr "Producto"
 #: view:mrp.workcenter:0
 msgid "Quantity"
 msgstr "Cantidad"
+
+#. module: mer_manufacturing
+#: view:mrp.workcenter:0
+msgid "Turn"
+msgstr "Turno"
