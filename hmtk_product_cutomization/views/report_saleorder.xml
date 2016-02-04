@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+3
+	<!-- Inherit quotation report (from module sale) -->
+	<template id="report_quotation_inherit_for_image" inherit_id="sale.report_saleorder_document">
+		<xpath expr="//table[@class='table table-condensed']" position="replace">
+			<table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Image</th>
+                        <th class="text-right">Descripcion of Insert</th>
+                        <th>Taxes</th>
+                        <th class="text-right">Quantity</th>
+                        <th class="text-right">Unit Price</th>
+                        <th groups="sale.group_discount_per_so_line">Disc.(%)</th>
+                        <th class="text-right">Price</th>
+                    </tr>
+               </thead>
+               <tbody class="sale_tbody">
+                    <tr t-foreach="o.order_line" t-as="l">
+                        <td>
+                           <span t-field="l.name"/>
+                        </td>
+                        <td>
+                        	<img t-att-src="'data:image/png;base64,'+l.product_image" style="height: 200px; width:200px"/>
+			            </td>
+			            <td class="text-right">
+                            <span t-field="l.insert_text"/>
+                        </td>
+                        <td>
+                            <span t-esc="', '.join(map(lambda x: x.name, l.tax_id))"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="l.product_uom_qty"/>
+                            <span groups="product.group_uom" t-field="l.product_uom"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="l.price_unit"/>
+                        </td>
+                        <td groups="sale.group_discount_per_so_line">
+                            <span t-field="l.discount"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="l.price_subtotal"
+                                t-field-options='{"widget": "monetary", "display_currency": "o.pricelist_id.currency_id"}'/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+		</xpath>
+	</template>
+
+</data>
+</openerp>

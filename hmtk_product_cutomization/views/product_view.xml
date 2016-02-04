@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+    
+        <record id="product_normal_form_view_inh" model="ir.ui.view">
+            <field name="name">product.product.form</field>
+            <field name="model">product.product</field>
+            <field eval="10" name="priority"/>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='product_manager']" position="attributes">
+            		<attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='product_manager']" position="after">
+                	<field name="product_manager_id"/>
+                </xpath>
+                
+            </field>
+        </record>
+    
+    </data>
+</openerp>
