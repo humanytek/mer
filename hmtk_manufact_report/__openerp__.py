@@ -20,6 +20,30 @@
 #
 ##############################################################################
 
-import model
+{
+    'name': 'Manufacturing Order Report Customization',
+    'version': '1.0',
+    'category': 'MRP',
+    'summary': 'Manage Manufact Report',
+    'description': """
+Manage Customer Claims.
+=======================
+This application allows you to track your customers/suppliers claims and grievances.
+
+It is fully integrated with the email gateway so that you can create
+automatically new claims based on incoming emails.
+
+    """,
+    'author': 'Broadtech-innovations',
+    'depends': ['mrp'],
+    'website': 'http://wwww.broadtech-innovations.com',
+    'data': [
+        'report/manufact_report_view.xml',
+        'report/manufact_report1_view.xml'
+        ],
+    'qweb': [],
+    'installable': True,
+    'auto_install': False,
+}
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

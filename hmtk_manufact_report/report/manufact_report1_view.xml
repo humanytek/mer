@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+    
+    <record id="view_manufact_report_graph_new" model="ir.ui.view">
+         <field name="name">manufact.report.graph.new</field>
+         <field name="model">manufact.report.new</field>
+         <field name="arch" type="xml">
+             <graph string="Manufacture Analysis" type="pivot" stacked="True">
+                 
+				 <field name="product_id" type="row"/>
+				 <field name="turn_id" type="col"/>
+				 <field name="date" interval="month" type="col"/>
+                 <field name="product_qty" type="measure"/> 
+                 <field name="weight_net" type="measure"/>
+             </graph>
+         </field>
+    </record>
+    
+    <record id="view_order_manufact_search_new" model="ir.ui.view">
+        <field name="name">manufact.report.search.new</field>
+        <field name="model">manufact.report.new</field>
+        <field name="arch" type="xml">
+            <search string="Manufact Analysis">
+                <field name="product_id" />
+				                
+            </search>
+        </field>
+    </record>
+    
+    <record id="filter_manufact_report_turn_new" model="ir.filters">
+        <field name="name">By Turn</field>
+        <field name="model_id">manufact.report.new</field>
+        <field name="user_id" eval="False"/>
+        <field name="context">{'group_by': ['turn_id']}</field>
+    </record>
+    
+    <record id="filter_manufact_report_product_new" model="ir.filters">
+        <field name="name">By Product</field>
+        <field name="model_id">manufact.report.new</field>
+        <field name="user_id" eval="False"/>
+        <field name="context">{'group_by': ['product_id']}</field>
+    </record>
+    
+    
+    <record id="action_manufact_report_all_new" model="ir.actions.act_window">
+        <field name="name">Reporte por máquina</field>
+        <field name="res_model">manufact.report.new</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">graph</field>
+        <field name="search_view_id" ref="view_order_manufact_search_new"/>
+        <field name="view_id" ref="view_manufact_report_graph_new"/>
+        <field name="context">{}</field>
+    </record>
+    
+    
+	<menuitem action="action_manufact_report_all_new" id="menu_report_manufact_all_new" parent="menu_mrp_manufacturing_reports" sequence="10"/>    
+    
+</data>
+</openerp>
