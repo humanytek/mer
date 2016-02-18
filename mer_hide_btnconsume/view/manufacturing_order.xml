@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 17/02/2016 (felix) Hide the consume button -->
+        <record id="mrp_production_form_view_1" model="ir.ui.view">
+            <field name="name">mrp.production.form.1</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="priority" eval="200"/>
+            <field name="arch" type="xml">
+            
+                <xpath expr="/form/sheet/notebook/page[@string='Consumed Products']/group/group[@string='Products to Consume']/field[@name='move_lines']/tree[@string='Products to Consume']/button[@name='%(mrp.move_consume)d']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            
+            </field>
+        </record>
+                        
+    </data>
+</openerp>
