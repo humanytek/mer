@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 17/02/2016 (felix) Form view, menu: Manufacturing/Configuration/Process of qualitiy -->
+        <record id="process_quality_form" model="ir.ui.view">
+            <field name="name">process.quality.form</field>
+            <field name="model">stock.quality</field>
+            <field name="priority" eval="200"/>
+            <field name="arch" type="xml">
+                <form string="Process of quality" version="7.0">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" string="Name"/>
+                                <field name="description" string="Description"/>
+                            </group>
+                            <group />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    
+        <!-- 17/02/2016 (felix) Tree view, menu: Manufacturing/Configuration/Process of qualitiy -->
+        <record id="process_quality_tree" model="ir.ui.view">
+            <field name="name">process.quality.tree</field>
+            <field name="model">stock.quality</field>
+            <field name="priority" eval="200"/>
+            <field name="arch" type="xml">
+                <tree string="Process of quality">
+                    <field name="name" string="Name"/>
+                    <field name="description" string="Description"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- 17/02/2016 (felix) Action menu: Manufacturing/Configuration/Process of qualitiy -->
+        <record id="action_quality" model="ir.actions.act_window">
+            <field name="name">Process of quality</field>
+            <field name="res_model">stock.quality</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="process_quality_tree"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to define a new rule of quality.
+              </p>
+            </field>
+        </record>
+        
+        <!-- 17/02/2016 (felix) Menu: Manufacturing/Configuration/Process of qualitiy -->
+        <menuitem id="menu_quality" action="action_quality" groups="stock.group_locations"
+            parent="stock.menu_stock_configuration" sequence="2"/>
+                
+    </data>
+</openerp>

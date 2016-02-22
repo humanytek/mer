@@ -19,27 +19,25 @@
 #
 ##############################################################################
 {
-    'name': 'Mercurio: req_16_10_2015_a',
+    'name': 'Mercurio: Process of Quality',
     'version': '0.1',
     'sequence': 1,
     'category': 'Custom',
     'complexity': 'easy',
-    'sumary': 'req_16_10_2015_a',
+    'sumary': 'mer_process_quality',
     'description': """
-Customizations in Manufacturing module
+Process of Quality
 
 Details:
 --------
-* Add field "machine_id" in Manufacturing/Manufacturing/Manufacturing Orders
-* Make filter and grouping by Machine in Manufacturing/Manufacturing/Manufacturing Orders
-* Make required the field "date" in Manufacturing/Manufacturing/Manufacturing Orders
+* Add catalog of reasons for each lot in Warehouse/Configuration
+* Add form in Warehouse/Traceability/Serial Numbers as a tab after Products tab
     """,
     'author': 'Humanytek',
     'website': 'https://github.com/humanytek/mer',
     'depends': [
         'base',
-        'mrp',
-        'mrp_operations',
+        'stock',
     ],
     'data': [
         # Security and groups
@@ -47,12 +45,13 @@ Details:
         # Data
         
         # Views
-        'view/manufacturing_orders.xml',
+        'view/serial_numbers.xml',
+        'view/process_quality_config.xml',
         
         # Other views
         
         # Wizard
-        
+                
         # Reports
     ],
     'demo_xml': [],

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- 22/02/2015 (felix) Form wizard: Produce -->
+        <record id="view_mrp_product_produce_wizard_inherit_2" model="ir.ui.view">
+            <field name="name">view.mrp.product.produce.wizard.inherit.2</field>
+            <field name="model">mrp.product.produce</field>
+            <field name="inherit_id" ref="mer_req_30_06_2015_a.view_mrp_product_produce_wizard_inherit_1"/>
+            <field name="priority" eval="200"/>
+            <field name="arch" type="xml">
+
+                <!-- 08/10/2015 (felix) Add fields: production_date -->
+                <xpath expr="//form/group[2]/group[2]/field[@name='weight']" position="after">
+                    <field name="production_date" string="Date of production" required="1"/>                    
+                </xpath>
+                
+            </field>
+        </record>
+
+    </data>
+</openerp>

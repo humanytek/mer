@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 17/02/2016 (felix) Form view, menu: Manufacturing/Traceability/Serial Numbers -->
+        <record id="view_production_lot_form_1" model="ir.ui.view">
+            <field name="name">stock.production.lot.form.1</field>
+            <field name="model">stock.production.lot</field>
+            <field name="inherit_id" ref="stock.view_production_lot_form"/>
+            <field name="priority" eval="200"/>
+            <field name="arch" type="xml">
+            
+                <!-- 17/02/2016 (felix) Add field: quality_ids -->
+                <xpath expr="/form/notebook/page[@string='Products']" position="after">
+                    <page string="Process of quality">
+                        <field name="quality_ids" string="Process of quality">
+                            <tree string="Quality" editable="1">
+                                <field name="quality_id" string="Process of quality" on_change="on_change_quality(quality_id)"
+                                    widget="selection"/>
+                                <field name="description" string="Description"/>
+                                <field name="review" string="Review"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+                
+                <!-- 18/02/2016 (felix) Add field: quality_status -->
+                <xpath expr="/form/div[@class='oe_button_box oe_right']" position="inside">
+                    <button class="oe_inline oe_stat_button" string="Quality status" name="quality_status_light" type="object" readonly="1" icon="fa-list-alt"
+                        statusbar_colors="{red:quality_status==2; green:quality_status==1; gray:quality_status==0}"/>
+                </xpath>
+
+            </field>
+        </record>
+                
+    </data>
+</openerp>

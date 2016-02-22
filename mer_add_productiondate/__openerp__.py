@@ -19,27 +19,20 @@
 #
 ##############################################################################
 {
-    'name': 'Mercurio: req_16_10_2015_a',
+    'name': 'Mercurio: Add a date field in wizard of production',
     'version': '0.1',
     'sequence': 1,
     'category': 'Custom',
     'complexity': 'easy',
-    'sumary': 'req_16_10_2015_a',
+    'sumary': 'mer_process_quality',
     'description': """
-Customizations in Manufacturing module
-
-Details:
---------
-* Add field "machine_id" in Manufacturing/Manufacturing/Manufacturing Orders
-* Make filter and grouping by Machine in Manufacturing/Manufacturing/Manufacturing Orders
-* Make required the field "date" in Manufacturing/Manufacturing/Manufacturing Orders
+Add a date field in the wizard of production orders
     """,
     'author': 'Humanytek',
     'website': 'https://github.com/humanytek/mer',
     'depends': [
         'base',
-        'mrp',
-        'mrp_operations',
+        'mer_req_30_06_2015_a',
     ],
     'data': [
         # Security and groups
@@ -47,12 +40,12 @@ Details:
         # Data
         
         # Views
-        'view/manufacturing_orders.xml',
         
         # Other views
         
         # Wizard
-        
+        'wizard/wizard_produce.xml',
+                
         # Reports
     ],
     'demo_xml': [],
