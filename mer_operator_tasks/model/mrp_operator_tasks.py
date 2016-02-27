@@ -18,37 +18,22 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+import time
 
 from openerp.osv import fields, osv
 from openerp.tools.translate import _
-import logging
-_logger = logging.getLogger(__name__)
+import openerp.addons.decimal_precision as dp
 
-class stock_production_lot_mer(osv.osv):
+class mrp_operator_tasks_mer(osv.osv_memory):
 
-    _inherit = 'stock.production.lot'
-    _description = 'Stock production lot'
-    
-    # 18/02/2016 (felix) Method to get the quality status
-    def _get_status_review(self, cr, uid, ids, field_name, args, context=None):
-        res = {}
-        for i in self.browse(cr, uid, ids, context):
-            res[i.id] = ''
-            for q in i.quality_ids:
-                if q.review == 'a':
-                    res[i.id] = 'a'
-                elif q.review == 'r':
-                    res[i.id] = 'r'
-                    return res
-        return res
-    
+    _name = 'mrp.operator.tasks'
+    _description = 'Tasks of operators'
     _columns = {
-        'quality_ids': fields.one2many('stock.production.lot.quality', 'lot_id', 
-            'Quality'),
-        'quality_status': fields.function(_get_status_review, type='selection',
-            selection=[('a','Approvated'),('r','Rejected')],
-            string='Quality status', store=True),
+        'task_id': fields.many2one('operator.tasks', 'Task'),
+        'operator_id': fields.many2one('hr.employee', 'Operator'),
+        'hours': fields.float('Hours'),
+        'lot_id': fields.many2one('stock.production.lot', 'Lot'),
+        'mrp_production_id': fields.many2one('mrp.production', 'Production ID')
     }
     
-
-stock_production_lot_mer()
+mrp_operator_tasks_mer()

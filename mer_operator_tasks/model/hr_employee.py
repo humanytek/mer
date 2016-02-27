@@ -18,37 +18,20 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+import time
 
 from openerp.osv import fields, osv
 from openerp.tools.translate import _
-import logging
-_logger = logging.getLogger(__name__)
+import openerp.addons.decimal_precision as dp
 
-class stock_production_lot_mer(osv.osv):
+class mrp_hr_employee_mer(osv.osv_memory):
 
-    _inherit = 'stock.production.lot'
-    _description = 'Stock production lot'
-    
-    # 18/02/2016 (felix) Method to get the quality status
-    def _get_status_review(self, cr, uid, ids, field_name, args, context=None):
-        res = {}
-        for i in self.browse(cr, uid, ids, context):
-            res[i.id] = ''
-            for q in i.quality_ids:
-                if q.review == 'a':
-                    res[i.id] = 'a'
-                elif q.review == 'r':
-                    res[i.id] = 'r'
-                    return res
-        return res
-    
+    _inherit = 'hr.employee'
+    _description = 'HR Employee object'
     _columns = {
-        'quality_ids': fields.one2many('stock.production.lot.quality', 'lot_id', 
-            'Quality'),
-        'quality_status': fields.function(_get_status_review, type='selection',
-            selection=[('a','Approvated'),('r','Rejected')],
-            string='Quality status', store=True),
+        'operator_ids': fields.one2many('mrp.operator.tasks', 'operator_id', 
+            'Operator'),
     }
     
 
-stock_production_lot_mer()
+mrp_hr_employee_mer()

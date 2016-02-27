@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <!-- 23/02/2016 (felix) Form view, menu: Manufacturing/Manufacturing/Manufacturing orders -->
+        <record id="mrp_production_form_inherit_1" model="ir.ui.view">
+            <field name="name">mrp.production.form.inherit.1</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="priority" eval="200"/>
+            <field name="arch" type="xml">
+            
+                <!-- 24/02/2015 (felix) Add a button in orden to add tasks -->
+                <xpath expr="//form/sheet/notebook/page[@string='Finished Products']/group/group[@string='Produced Products']" position="after">
+                    <group string="Tasks of operators" colspan="2" states="done,cancel">
+                        <field name="mrp_operator_task_ids" nolabel="1">
+                            <tree string="Operator tasks" editable="1">
+                                <field name="task_id" string="Task" required="1"/>
+                                <field name="operator_id" string="Operator" required="1"/>
+                                <field name="hours" string="Hours" required="1" widget="float_time"/>
+                                <field name="lot_id" string="Lot" required="1"/>
+                            </tree>
+                        </field>
+                    </group>
+                </xpath>
+                
+            </field>
+        </record>
+                        
+    </data>
+</openerp>

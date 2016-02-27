@@ -31,6 +31,7 @@ Customizations in Manufacturing module
 Details:
 --------
 * Add fields: turn_id, operator_id, hours, location_src_id, weight, and location_dest_id in Wizard Produce in Manufacturing/Manufacturing/Manufacturing Orders
+* Add behavior in methods to produce a product, change location_dest_id fields, take value from produce wizard
     """,
     'author': 'Humanytek',
     'website': 'https://github.com/humanytek/mer',

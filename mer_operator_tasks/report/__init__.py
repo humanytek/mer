@@ -18,45 +18,5 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-{
-    'name': 'Mercurio: Process of Quality',
-    'version': '0.1',
-    'sequence': 1,
-    'category': 'Custom',
-    'complexity': 'easy',
-    'sumary': 'mer_process_quality',
-    'description': """
-Process of Quality
-
-Details:
---------
-* Add catalog of reasons for each lot in Warehouse/Configuration
-* Add form in Warehouse/Traceability/Serial Numbers as a tab after Products tab
-    """,
-    'author': 'Humanytek',
-    'website': 'https://github.com/humanytek/mer',
-    'depends': [
-        'base',
-        'stock',
-        'mer_req_30_06_2015_a'
-    ],
-    'data': [
-        # Security and groups
-    
-        # Data
-        
-        # Views
-        'view/serial_numbers.xml',
-        'view/process_quality_config.xml',
-        
-        # Other views
-        
-        # Wizard
-                
-        # Reports
-    ],
-    'demo_xml': [],
-    'installable': True,
-    'auto_install': False,
-    'application': True,
-}
+#import stick_aprobado
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

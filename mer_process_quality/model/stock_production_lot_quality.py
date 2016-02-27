@@ -24,7 +24,7 @@ from openerp.tools.translate import _
 import logging
 _logger = logging.getLogger(__name__)
 
-class stock_production_lot_quality_mer(osv.osv_memory):
+class stock_production_lot_quality_mer(osv.osv):
 
     _name = 'stock.production.lot.quality'
     _description = 'Stock production lot with process of quality'    

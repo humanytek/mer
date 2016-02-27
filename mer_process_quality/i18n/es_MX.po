@@ -16,28 +16,57 @@ msgstr ""
 "X-Launchpad-Export-Date: 2014-10-07 06:57+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
-#. module: mer_pro_calidad
+#. module: mer_process_quality
 #: view:stock.quality:0
+#: view:stock.production.lot.quality:0
+#: view:stock.production.lot:0
+#: model:ir.actions.act_window,name:action_quality
+#: model:ir.ui.menu,name:menu_quality
 msgid "Process of quality"
 msgstr "Procedimiento de calidad"
 
-#. module: mer_pro_calidad
-#: view:stock.quality:0
+#. module: mer_process_quality
+#: model:ir.actions.act_window,help:action_quality
 msgid "Click to define a new rule of quality."
 msgstr "Click para crear una nueva regla de calidad."
 
-#. module: mer_pro_calidad
+#. module: mer_process_quality
 #: view:stock.quality:0
 msgid "Name"
 msgstr "Nombre de revisión"
 
-#. module: mer_pro_calidad
+#. module: mer_process_quality
 #: view:stock.quality:0
+#: view:stock.production.lot.quality:0
+#: view:stock.production.lot:0
 msgid "Description"
 msgstr "Descripción"
 
-#. module: mer_pro_calidad
+#. module: mer_process_quality
 #: view:stock.quality:0
-msgid "Status"
-msgstr "Estatus"
+#: view:stock.production.lot.quality:0
+#: view:stock.production.lot:0
+msgid "Review"
+msgstr "Revisión"
+
+#. module: mer_process_quality
+#: view:stock.production.lot:0
+msgid "Quality status"
+msgstr "Estatus de calidad"
+
+#. module: mer_process_quality
+#: view:stock.production.lot:0
+#: view:stock.production.lot.quality:0
+#: selection:stock.production.lot,quality_status:0
+#: selection:stock.production.lot.quality,review:0
+msgid "Approvated"
+msgstr "Aprobado"
+
+#. module: mer_process_quality
+#: view:stock.production.lot:0
+#: view:stock.production.lot.quality:0
+#: selection:stock.production.lot,quality_status:0
+#: selection:stock.production.lot.quality,review:0
+msgid "Rejected"
+msgstr "Rechazado"
 

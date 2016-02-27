@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 23/02/2016 (felix) Form view, menu: Manufacturing/Configuration/Operator tasks -->
+        <record id="operator_tasks_form" model="ir.ui.view">
+            <field name="name">operator.tasks.form</field>
+            <field name="model">operator.tasks</field>
+            <field name="priority" eval="200"/>
+            <field name="arch" type="xml">
+                <form string="Tasks of operators" version="7.0">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" string="Task" required="1"/>
+                                <field name="description" string="Description"/>
+                            </group>
+                            <group>
+                                <field name="product_ids" string="Products">
+                                    <tree string="Products" editable="1">
+                                        <field name="product_id" string="Product"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    
+        <!-- 23/02/2016 (felix) Tree view, menu: Manufacturing/Configuration/Operator tasks -->
+        <record id="operator_tasks_tree" model="ir.ui.view">
+            <field name="name">operator.tasks.tree</field>
+            <field name="model">operator.tasks</field>
+            <field name="priority" eval="200"/>
+            <field name="arch" type="xml">
+                <tree string="Tasks of operators">
+                    <field name="name" string="Task"/>
+                    <field name="description" string="Description"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- 23/02/2016 (felix) Action menu: Manufacturing/Configuration/Operator tasks -->
+        <record id="action_operator_tasks" model="ir.actions.act_window">
+            <field name="name">Tasks of operators</field>
+            <field name="res_model">operator.tasks</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="operator_tasks_tree"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to define a new rule of quality.
+              </p>
+            </field>
+        </record>
+        
+        <!-- 23/02/2016 (felix) Menu: Manufacturing/Configuration/Operator tasks -->
+        <menuitem id="menu_operator_tasks" action="action_operator_tasks" groups="stock.group_locations" string="Tasks of operators" 
+            parent="mrp.menu_mrp_configuration" sequence="2"/>
+                
+    </data>
+</openerp>

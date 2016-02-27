@@ -19,26 +19,26 @@
 #
 ##############################################################################
 {
-    'name': 'Mercurio: Process of Quality',
+    'name': 'Mercurio: Tasks of operators',
     'version': '0.1',
     'sequence': 1,
     'category': 'Custom',
     'complexity': 'easy',
     'sumary': 'mer_process_quality',
     'description': """
-Process of Quality
+Tasks of operators during production
 
 Details:
 --------
-* Add catalog of reasons for each lot in Warehouse/Configuration
-* Add form in Warehouse/Traceability/Serial Numbers as a tab after Products tab
+* Add catalog of tasks for each operator over each product in Warehouse/Configuration
+* Add form wizard in Manufacturing/Manufacturing/Manufacturing Orders
     """,
     'author': 'Humanytek',
     'website': 'https://github.com/humanytek/mer',
     'depends': [
         'base',
-        'stock',
-        'mer_req_30_06_2015_a'
+        'mrp',
+        'product',
     ],
     'data': [
         # Security and groups
@@ -46,8 +46,8 @@ Details:
         # Data
         
         # Views
-        'view/serial_numbers.xml',
-        'view/process_quality_config.xml',
+        'view/manufacturing_orders.xml',
+        'view/operator_tasks_config.xml',
         
         # Other views
         

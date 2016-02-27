@@ -54,5 +54,16 @@ class mrp_product_produce_mer(osv.osv_memory):
         if weight < pw_less:
             raise osv.except_osv(_('Warning!'), _('The weight is less than 20 percent permitted.'))
         return True
+        
+    # 26/02/2016 (felix) Original method to send the destiny location
+    def do_produce(self, cr, uid, ids, context=None):
+        production_id = context.get('active_id', False)
+        assert production_id, "Production Id should be specified in context as a Active ID."
+        data = self.browse(cr, uid, ids[0], context=context)
+        self.pool.get('mrp.production').action_produce(cr, uid, production_id,
+            data.product_qty, data.mode, data.location_dest_id, data, context=context)
+            
+        return {}
+
 
 mrp_product_produce_mer()
