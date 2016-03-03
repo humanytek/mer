@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 03/03/2016 (felix) Form view, menu: Warehouse/Traceability/Serial Numbers -->
+        <record id="view_inventory_form_1" model="ir.ui.view">
+            <field name="name">view.inventory.form.1</field>
+            <field name="model">stock.inventory</field>
+            <field name="inherit_id" ref="stock.view_inventory_form"/>
+            <field name="priority" eval="200"/>
+            <field name="arch" type="xml">
+            
+                <!-- 03/03/2016 (felix) Force as required field Period: period_id -->
+                <xpath expr="//form/sheet/group[1]/group[2]/field[@name='period_id']" position="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>
+                
+            </field>
+        </record>
+              
+    </data>
+</openerp>
