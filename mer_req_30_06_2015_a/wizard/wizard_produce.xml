@@ -44,13 +44,21 @@
                     <field name="operators_ids" string="Operators">
                         <tree string="Operators" editable="1">
                             <field name="operator_id" string="Operator" required="1"/>
-                            <field name="turn_id" string="Turn" required="1"/>                            
+                            <field name="turn_id" string="Turn" required="1"/>
                             <field name="hours" string="Hours" required="1" widget="float_time"/>
                         </tree>
-                    </field>
-                    
+                    </field>                    
                 </xpath>
                 
+                <!-- 03/03/2016 (felix) Add fields:
+                    - main_turn_id
+                    - machine_id
+                -->
+                <xpath expr="//form/group[@string='Produce']/field[@name='product_id']" position="after">
+                    <field name="main_turn_id" invisible="1"/>
+                    <field name="machine_id" invisible="1"/>
+                </xpath>
+                                
             </field>
         </record>
 

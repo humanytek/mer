@@ -21,7 +21,6 @@
 ##############################################################################
 
 from openerp.osv import fields, osv
-from openerp.tools.translate import _
 import time
 class mrp_production(osv.osv):
     _inherit = 'mrp.production'
@@ -34,6 +33,7 @@ class mrp_production(osv.osv):
         'move_lines2': fields.one2many('stock.move', 'raw_material_production_id', 'Consumed Products',
             domain=[('state', 'in', ('done', 'cancel'))], states={'done': [('readonly', True)]}),
         'date' : fields.datetime('Date'),
+        'product_lines': fields.one2many('mrp.production.product.line', 'production_id', 'Scheduled goods',),
                 }
     
     def bom_id_change(self, cr, uid, ids, bom_id, location_src_id=False, product_id=False, state='draft', context=None):
@@ -153,11 +153,25 @@ class mrp_production(osv.osv):
         uncompute_ids = filter(lambda x: x, [not x.product_lines and x.id or False for x in self.browse(cr, uid, ids, context=context)])
         self.action_compute(cr, uid, uncompute_ids, context=context)
         for production in self.browse(cr, uid, ids, context=context):
-            for move in production.move_lines:
-                stock_moves.append(move.id)
-            if stock_moves:
-                self.pool.get('stock.move').action_confirm(cr, uid, stock_moves, context=context)
-            production.write({'state': 'confirmed'})
+            if production.move_lines:
+                for move in production.move_lines:
+                    stock_moves.append(move.id)
+                if stock_moves:
+                    self.pool.get('stock.move').action_confirm(cr, uid, stock_moves, context=context)
+                production.write({'state': 'confirmed'})
+            else:
+                self._make_production_produce_line(cr, uid, production, context=context)
+ 
+                stock_moves = []
+                for line in production.product_lines:
+                    if line.product_id.type != 'service':
+                        stock_move_id = self._make_production_consume_line(cr, uid, line, context=context)
+                        stock_moves.append(stock_move_id)
+                    else:
+                        self._make_service_procurement(cr, uid, line, context=context)
+                if stock_moves:
+                    self.pool.get('stock.move').action_confirm(cr, uid, stock_moves, context=context)
+                production.write({'state': 'confirmed'})
         return 0
             
 #     def write(self, cr, uid, ids, vals, context=None):

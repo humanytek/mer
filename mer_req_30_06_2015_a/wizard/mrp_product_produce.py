@@ -23,6 +23,8 @@ import time
 from openerp.osv import fields, osv
 from openerp.tools.translate import _
 import openerp.addons.decimal_precision as dp
+import logging
+_logger = logging.getLogger(__name__)
 
 class mrp_product_produce_mer(osv.osv_memory):
 
@@ -35,7 +37,9 @@ class mrp_product_produce_mer(osv.osv_memory):
             'Finished Products Location'),
         'weight': fields.float('Weight', digits_compute=dp.get_precision('Product Unit of Measure')),
         'operators_ids': fields.one2many('mrp.product.produce.operators', 
-            'operators_id', 'Operators')
+            'operators_id', 'Operators'),
+        'main_turn_id': fields.many2one('resource.calendar', type='many2one'),
+        'machine_id': fields.many2one('mrp.workcenter', type='many2one'),
     }
     
     # 19/10/2015 (felix) Method to check weight of the product
@@ -64,6 +68,26 @@ class mrp_product_produce_mer(osv.osv_memory):
             data.product_qty, data.mode, data.location_dest_id, data, context=context)
             
         return {}
-
+    
+    # 03/03/2016 (felix) Get value of "turn_id" field
+    def _get_turn_id(self, cr, uid, context=None):
+        prod = False
+        if context and context.get('active_id'):
+            prod = self.pool.get('mrp.production').browse(cr, uid, 
+                        context['active_id'], context=context)
+        return prod.turn_id.id or False
+        
+    # 03/03/2016 (felix) Get value of "machine_id" field
+    def _get_machine_id(self, cr, uid, context=None):
+        prod = False
+        if context and context.get('active_id'):
+            prod = self.pool.get('mrp.production').browse(cr, uid, 
+                        context['active_id'], context=context)
+        return prod.machine_id.id or False
+        
+    _defaults = {
+        'main_turn_id': _get_turn_id,
+        'machine_id': _get_machine_id
+    }
 
 mrp_product_produce_mer()

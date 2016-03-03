@@ -22,7 +22,7 @@
 
 {
     'name': 'Manufacturing Order Customization',
-    'version': '1.2',
+    'version': '1.3',
     'category': 'Customer Relationship Management',
     'summary': 'Manage Point of sale activities',
     'description': """

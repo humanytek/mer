@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 01/03/2016 (felix) Tree view, menu: Manufacturing/Traceability/Serial Numbers -->
+        <record id="view_report_tree" model="ir.ui.view">
+            <field name="name">view.report.tree</field>
+            <field name="model">mrp.product.produce</field>
+            <field name="priority" eval="200"/>
+            <field name="arch" type="xml">
+                <tree string="Reporte por máquina" readonly="1">
+                    <field name="machine_id" string="Machine"/>
+                    <field name="production_date" string="Production Date"/>
+                    <field name="main_turn_id" string="Turn"/>
+                    <field name="product_id" string="Product"/>
+                    <field name="weight" string="Weight"/>
+                    <field name="product_qty" string="Product Quantity"/>
+                    <field name="operator_list" string="Operator"/>
+                    
+                </tree>
+            </field>
+        </record>
+        
+        <!-- 01/03/2016 (felix) Action: Manufacturing/Traceability/Serial Numbers -->
+        <record id="view_report_search" model="ir.ui.view">
+            <field name="name">view.report.search</field>
+            <field name="model">mrp.product.produce</field>
+            <field name="arch" type="xml">
+                <search string="Manufact Analysis">
+                    <field name="product_id" string="Product"/>
+                </search>
+            </field>
+        </record>
+        
+        <!-- 01/03/2016 (felix) Action: Manufacturing/Traceability/Serial Numbers -->
+        <record id="action_report" model="ir.actions.act_window">
+            <field name="name">Reporte por máquina</field>
+            <field name="res_model">mrp.product.produce</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="search_view_id" ref="view_report_search"/>
+            <field name="view_id" ref="view_report_tree"/>
+            <field name="context">{}</field>
+        </record>
+        
+        <!-- 01/03/2016 (felix) Replace menu: menu_report_manufact_all_new -->
+        <menuitem id="hmtk_manufact_report.menu_report_manufact_all_new" action="action_report" 
+            parent="hmtk_manufact_report.menu_mrp_manufacturing_reports" sequence="10"/>
+                
+    </data>
+</openerp>
