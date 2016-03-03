@@ -56,7 +56,7 @@
         </record>
         
         <!-- 23/02/2016 (felix) Menu: Manufacturing/Configuration/Operator tasks -->
-        <menuitem id="menu_operator_tasks" action="action_operator_tasks" groups="stock.group_locations" string="Tasks of operators" 
+        <menuitem id="menu_operator_tasks" action="action_operator_tasks" groups="mrp.group_mrp_user,mrp.group_mrp_manager" string="Tasks of operators" 
             parent="mrp.menu_mrp_configuration" sequence="2"/>
                 
     </data>

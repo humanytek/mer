@@ -2,10 +2,11 @@
 <openerp>
     <data>
     
-        <!-- 17/02/2016 (felix) Form view, menu: Manufacturing/Configuration/Process of qualitiy -->
+        <!-- 17/02/2016 (felix) Form view, menu: Warehouse/Configuration/Process of qualitiy -->
+        <!-- 03/03/2016 (felix) Form view, menu: Manufacturing/Configuration/Process of qualitiy -->
         <record id="process_quality_form" model="ir.ui.view">
             <field name="name">process.quality.form</field>
-            <field name="model">stock.quality</field>
+            <field name="model">mrp.quality</field>
             <field name="priority" eval="200"/>
             <field name="arch" type="xml">
                 <form string="Process of quality" version="7.0">
@@ -22,10 +23,11 @@
             </field>
         </record>
     
-        <!-- 17/02/2016 (felix) Tree view, menu: Manufacturing/Configuration/Process of qualitiy -->
+        <!-- 17/02/2016 (felix) Tree view, menu: Warehouse/Configuration/Process of qualitiy -->
+        <!-- 03/03/2016 (felix) Tree view, menu: Manufacturing/Configuration/Process of qualitiy -->
         <record id="process_quality_tree" model="ir.ui.view">
             <field name="name">process.quality.tree</field>
-            <field name="model">stock.quality</field>
+            <field name="model">mrp.quality</field>
             <field name="priority" eval="200"/>
             <field name="arch" type="xml">
                 <tree string="Process of quality">
@@ -35,10 +37,11 @@
             </field>
         </record>
         
-        <!-- 17/02/2016 (felix) Action menu: Manufacturing/Configuration/Process of qualitiy -->
+        <!-- 17/02/2016 (felix) Action menu: Warehouse/Configuration/Process of qualitiy -->
+        <!-- 03/03/2016 (felix) Action menu: Manufacturing/Configuration/Process of qualitiy -->
         <record id="action_quality" model="ir.actions.act_window">
             <field name="name">Process of quality</field>
-            <field name="res_model">stock.quality</field>
+            <field name="res_model">mrp.quality</field>
             <field name="type">ir.actions.act_window</field>
             <field name="view_type">form</field>
             <field name="view_id" ref="process_quality_tree"/>
@@ -49,9 +52,10 @@
             </field>
         </record>
         
-        <!-- 17/02/2016 (felix) Menu: Manufacturing/Configuration/Process of qualitiy -->
-        <menuitem id="menu_quality" action="action_quality" groups="stock.group_locations"
-            parent="stock.menu_stock_configuration" sequence="2"/>
+        <!-- 17/02/2016 (felix) Menu: Warehouse/Configuration/Process of qualitiy -->
+        <!-- 03/03/2016 (felix) Menu: Manufacturing/Configuration/Process of qualitiy -->
+        <menuitem id="menu_quality" action="action_quality" groups="mrp.group_mrp_user,mrp.group_mrp_manager"
+            parent="mrp.menu_mrp_configuration" sequence="2"/>
                 
     </data>
 </openerp>

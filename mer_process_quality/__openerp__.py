@@ -30,14 +30,14 @@ Process of Quality
 
 Details:
 --------
-* Add catalog of reasons for each lot in Warehouse/Configuration
-* Add form in Warehouse/Traceability/Serial Numbers as a tab after Products tab
+* Add catalog of reasons for each lot in Manufacturing/Configuration
+* Form view, moved to: Manufacturing/Manufacturing/Manufacturing orders (Wizard)
     """,
     'author': 'Humanytek',
     'website': 'https://github.com/humanytek/mer',
     'depends': [
         'base',
-        'stock',
+        'mrp',
         'mer_req_30_06_2015_a'
     ],
     'data': [
@@ -46,12 +46,13 @@ Details:
         # Data
         
         # Views
-        'view/serial_numbers.xml',
+        #'view/serial_numbers.xml',
         'view/process_quality_config.xml',
         
         # Other views
         
         # Wizard
+        'wizard/wizard_produce.xml',
                 
         # Reports
     ],

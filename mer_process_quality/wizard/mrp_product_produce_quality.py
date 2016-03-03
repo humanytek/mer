@@ -26,13 +26,17 @@ _logger = logging.getLogger(__name__)
 
 class stock_production_lot_quality_mer(osv.osv):
 
-    _name = 'stock.production.lot.quality'
+    # 03/03/2016 (felix) Moved to mrp modules
+    #_name = 'stock.production.lot.quality'
+    _name = 'mrp.product.produce.quality'
     _description = 'Stock production lot with process of quality'    
     _columns = {
-        'quality_id': fields.many2one('stock.quality', 'Process of quality'),
+        'quality_id': fields.many2one('mrp.quality', 'Process of quality'),
         'description': fields.text('Description'),
+        'quantity': fields.float('Quantity'),
         'review': fields.selection([('a', 'Approvated'), ('r', 'Rejected')], 'Status'),
-        'lot_id': fields.many2one('stock.production.lot', 'Serial number'),
+        'product_produce_id': fields.many2one('mrp.product.produce', 
+            'Product produce wizard'),
     }
     _rec_name = 'quality_id'
     

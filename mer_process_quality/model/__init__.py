@@ -18,6 +18,4 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-import stock_quality
-import stock_production_lot
-import stock_production_lot_quality
+#import 

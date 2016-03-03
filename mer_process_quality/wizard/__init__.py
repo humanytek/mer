@@ -18,4 +18,6 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.     
 #
 ##############################################################################
-#import
+import mrp_product_produce
+import mrp_product_produce_quality
+import mrp_quality
