@@ -40,6 +40,7 @@ Details:
         'base',
         'mrp',
         'mrp_operations',
+        'hmtk_mo_customization',
     ],
     'data': [
         # Security and groups

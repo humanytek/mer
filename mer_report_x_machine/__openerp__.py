@@ -19,7 +19,7 @@
 #
 ##############################################################################
 {
-    'name': 'Mercurio: Repor by Machine',
+    'name': 'Mercurio: Report by Machine',
     'version': '0.1',
     'sequence': 1,
     'category': 'Custom',
