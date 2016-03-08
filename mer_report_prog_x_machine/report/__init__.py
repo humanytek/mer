@@ -18,39 +18,5 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-{
-    'name': 'Mercurio: Force as required field Period',
-    'version': '0.1',
-    'sequence': 1,
-    'category': 'Custom',
-    'complexity': 'easy',
-    'sumary': 'mer_process_quality',
-    'description': """
-Force as required field Period in Inventory Adjustments menu: Warehouse/Inventory Control/Inventory Adjustments
-    """,
-    'author': 'Humanytek',
-    'website': 'https://github.com/humanytek/mer',
-    'depends': [
-        'base',
-        'stock',
-        'stock_account',
-    ],
-    'data': [
-        # Security and groups
-    
-        # Data
-        
-        # Views
-        'view/inventory_adjustments.xml',
-        
-        # Other views
-        
-        # Wizard
-                
-        # Reports
-    ],
-    'demo_xml': [],
-    'installable': True,
-    'auto_install': False,
-    'application': True,
-}
+#import stick_aprobado
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

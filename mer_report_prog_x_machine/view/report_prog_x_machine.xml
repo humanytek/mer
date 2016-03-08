@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 07/03/2016 (felix) Graph view, menu: Manufacturing/Report/Programas de máquinas -->
+        <record id="view_manufact_report_graph_inherit_1" model="ir.ui.view">
+            <field name="name">manufact.report.graph.inherit.1</field>
+            <field name="model">manufact.report</field>
+            <field name="priority" eval="200"/>
+            <field name="inherit_id" ref="hmtk_manufact_report.view_manufact_report_graph"/>
+            <field name="arch" type="xml">
+            
+                <!-- 07/03/2016 (felix) Replace the graph view in order to make a new order -->
+                <xpath expr="//graph" position="replace">
+                    <graph string="Manufacture Analysis" type="pivot" stacked="True">
+                        <field name="machine_id" type="col"/>
+                        <field name="date" interval="month" type="col"/>
+                        <field name="turn_id" type="col"/>
+                        <field name="product_id" type="row"/>
+                        <field name="weight_net" type="measure"/>
+                        <field name="qty" type="measure"/>
+                    </graph>
+                </xpath>
+                
+            </field>
+        </record>
+                
+    </data>
+</openerp>

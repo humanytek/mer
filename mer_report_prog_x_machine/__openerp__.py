@@ -19,21 +19,25 @@
 #
 ##############################################################################
 {
-    'name': 'Mercurio: Force as required field Period',
+    'name': 'Mercurio: Report Program by Machines',
     'version': '0.1',
     'sequence': 1,
     'category': 'Custom',
     'complexity': 'easy',
-    'sumary': 'mer_process_quality',
+    'sumary': 'mer_prog_x_machine',
     'description': """
-Force as required field Period in Inventory Adjustments menu: Warehouse/Inventory Control/Inventory Adjustments
+Report Program by machines
+
+Details:
+--------
+* Create a visual report in graph view added on menu: Manufacturing/Report/Programas de máquinas
     """,
     'author': 'Humanytek',
     'website': 'https://github.com/humanytek/mer',
     'depends': [
         'base',
-        'stock',
-        'stock_account',
+        'mrp',
+        'hmtk_manufact_report'
     ],
     'data': [
         # Security and groups
@@ -41,7 +45,7 @@ Force as required field Period in Inventory Adjustments menu: Warehouse/Inventor
         # Data
         
         # Views
-        'view/inventory_adjustments.xml',
+        'view/report_prog_x_machine.xml',
         
         # Other views
         
