@@ -35,7 +35,7 @@ automatically new claims based on incoming emails.
 
     """,
     'author': 'Broadtech-innovations',
-    'depends': ['mrp'],
+    'depends': ['mrp','mer_req_16_10_2015_a','mer_req_16_10_2015_b'],
     'website': 'http://wwww.broadtech-innovations.com',
     'data': [
         'report/manufact_report_view.xml',

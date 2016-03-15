@@ -60,12 +60,60 @@ class mrp_product_produce_mer(osv.osv_memory):
         return True
         
     # 26/02/2016 (felix) Original method to send the destiny location
+    # 09/03/2016 (felix) Added writing in mrp_resume_report object
+    # 11/03/2016 (felix) Added writing in mrp_resume_report_operators object
     def do_produce(self, cr, uid, ids, context=None):
         production_id = context.get('active_id', False)
         assert production_id, "Production Id should be specified in context as a Active ID."
         data = self.browse(cr, uid, ids[0], context=context)
         self.pool.get('mrp.production').action_produce(cr, uid, production_id,
             data.product_qty, data.mode, data.location_dest_id, data, context=context)
+            
+        # 09/03/2016 (felix) Writing in mrp_resume_report
+        obj_mrp_resume_report = self.pool.get('mrp.resume.report')
+        if context and context.get('active_id'):
+            prod = self.pool.get('mrp.production').browse(cr, uid, context['active_id'], context=context)
+            # Init values
+            values = {}
+            qty_1 = data.product_qty
+            qty_2 = 0.00
+            qty_3 = 0.00
+            mrp_id = prod.id
+            product_id = prod.product_id.id
+            machine_id = prod.machine_id.id
+            production_date = data.production_date
+            weight = data.weight
+            
+            for q in data.quality_ids:
+                qty_3 = q.quantity
+            
+            values = {
+                'product_id': product_id,
+                'machine_id': machine_id,
+                'qty_1': qty_1,
+                'qty_2': qty_2,
+                'qty_3': qty_3,
+                'weight': weight,
+                'production_date': data.production_date,
+                'mrp_id': mrp_id
+            }
+            obj_mrp_resume_report.create(cr, uid, values, context)
+            
+            # 11/03/2016 (felix) Writing in mrp_resume_report_operators
+            data_employees = []
+            values_employess = {}
+            obj_location_employees = self.pool.get('mrp.resume.report.operators')
+            for e in data.operators_ids:
+                values_employees = {
+                    'machine_id': machine_id,
+                    'production_date': production_date,
+                    'operator_id': e.operator_id.id,
+                    'hours': e.hours                    
+                }
+                data_employees.append(values_employees)
+                
+            for d in data_employees:
+                obj_location_employees.create(cr, uid, d, context)
             
         return {}
     

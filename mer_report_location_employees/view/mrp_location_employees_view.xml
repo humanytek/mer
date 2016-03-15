@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 11/03/2016 (felix) Tree view, menu: Manufacturing/Report/Location of employees -->
+        <record id="view_location_employees_tree" model="ir.ui.view">
+            <field name="name">view.location.employees.tree</field>
+            <field name="model">mrp.resume.report.operators</field>
+            <field name="priority" eval="200"/>
+            <field name="arch" type="xml">
+            
+                <!-- 11/03/2016 (felix) Tree view in order to make a new order -->
+                <tree string="Location of employees" readonly="1">
+                    <field name="machine_id" string="Machine"/>
+                    <field name="production_date" string="Production date"/>
+                    <field name="operator_id" string="Operator"/>
+                    <field name="hours" string="Hours" widget="float_time"/>
+                </tree>
+                
+            </field>
+        </record>
+        
+        <!-- 10/03/2016 (felix) Search: Manufacturing/Report/Location of employees -->
+        <record id="search_location_employees" model="ir.ui.view">
+            <field name="name">search.location.employees</field>
+            <field name="model">mrp.resume.report.operators</field>
+            <field name="arch" type="xml">
+                <search string="Location of employees">
+                    <field name="operator_id" string="Operator"/>
+                </search>
+            </field>
+        </record>
+        
+        <!-- 10/03/2016 (felix) Action: Manufacturing/Report/Location of employees -->
+        <record id="action_location_employees" model="ir.actions.act_window">
+            <field name="name">Location of employees</field>
+            <field name="res_model">mrp.resume.report.operators</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="search_view_id" ref="search_location_employees"/>
+            <field name="view_id" ref="view_location_employees_tree"/>
+            <field name="context">{}</field>
+        </record>
+        
+        <!-- 10/03/2016 (felix) Menu: Manufacturing/Report/Location of employees -->
+        <menuitem id="menu_report_location_employees" string="Location of employees" action="action_location_employees"  
+            parent="hmtk_manufact_report.menu_mrp_manufacturing_reports" sequence="25"/>
+                
+    </data>
+</openerp>

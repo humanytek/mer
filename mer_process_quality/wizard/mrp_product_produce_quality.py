@@ -43,10 +43,10 @@ class stock_production_lot_quality_mer(osv.osv):
     # 18/02/2016 (felix) Method to get and fill description of process of quality
     def on_change_quality(self, cr, uid, ids, quality_id, context=None):
         res = {}
-        obj_stock_quality = self.pool.get('stock.quality')
+        obj_mrp_quality = self.pool.get('mrp.quality')
         if quality_id:
-            get_quality = obj_stock_quality.search(cr, uid, [('id', '=', quality_id)])
-            for i in obj_stock_quality.browse(cr, uid, get_quality, context):
+            get_quality = obj_mrp_quality.search(cr, uid, [('id', '=', quality_id)])
+            for i in obj_mrp_quality.browse(cr, uid, get_quality, context):
                 res = {
                     'description': i.description
                 }

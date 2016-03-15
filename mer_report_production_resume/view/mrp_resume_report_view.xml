@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 08/03/2016 (felix) Tree view, menu: Manufacturing/Report/Production resume -->
+        <record id="view_mrp_resume_report_tree" model="ir.ui.view">
+            <field name="name">view.mrp.resume.report.tree</field>
+            <field name="model">mrp.resume.report</field>
+            <field name="priority" eval="200"/>
+            <field name="arch" type="xml">
+            
+                <!-- 08/03/2016 (felix) Tree view in order to make a new order -->
+                <tree string="Production resume" readonly="1">
+                    <field name="production_date" string="Production date" invisible="1"/>
+                    <field name="product_id" string="Product" invisible="1"/>
+                    <field name="machine_id" string="Machine" invisible="1"/>
+                    <field name="qty_1" string="First Quantity" sum="First Quantity"/>
+                    <field name="qty_3" string="Rejected Quantity" sum="Rejected Quantity"/>
+                    <field name="total_qty_1" string="Total Quantity" sum="Total Quantity"/>
+                    <field name="total_qty_3" string="Total Rejected" sum="Total Rejected"/>
+                    <field name="weight" string="Weight" sum="Weight"/>
+                    <field name="weight_1" string="First Weight" sum="First Weight"/>
+                    <field name="weight_3" string="Weight Rejected" sum="Weight Rejected"/>
+                    <field name="rejected_pow" string="%% Rejected" sum="%% Rejected"/>
+                </tree>
+                
+            </field>
+        </record>
+        
+        <!-- 10/03/2016 (felix) Search: Manufacturing/Report/Production resume -->
+        <record id="search_production_resume" model="ir.ui.view">
+            <field name="name">search.production.resume</field>
+            <field name="model">mrp.resume.report</field>
+            <field name="arch" type="xml">
+                <search string="Production resume">
+                    <field name="production_date" />
+                    <field name="product_id" />
+                    <field name="machine_id" />
+                </search>
+            </field>
+        </record>
+        
+        <!-- 10/03/2016 (felix) Action: Manufacturing/Report/Production resume -->
+        <record id="action_production_resume" model="ir.actions.act_window">
+            <field name="name">Production resume</field>
+            <field name="res_model">mrp.resume.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="search_view_id" ref="search_production_resume"/>
+            <field name="view_id" ref="view_mrp_resume_report_tree"/>
+            <field name="context">{'group_by': ['production_date','product_id','machine_id']}</field>
+        </record>
+        
+        <!-- 10/03/2016 (felix) Menu: Manufacturing/Report/Production resume -->
+        <menuitem id="menu_production_resume" string="Production resume" action="action_production_resume"  
+            parent="hmtk_manufact_report.menu_mrp_manufacturing_reports" sequence="20"/>
+                
+    </data>
+</openerp>
