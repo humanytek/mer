@@ -120,7 +120,7 @@ class mrp_production(osv.osv):
             for line in production.bom_id.bom_line_ids:
                 vals = {
                 'product_id': line.product_id.id,
-                'product_uom_qty': line.product_qty or 0.00,
+                'product_uom_qty': production.product_qty * line.product_qty or 0.00,
                 'name': line.product_id.name,
                 'invoice_state' : 'none',
                 'date_expected' : time.strftime("%Y-%m-%d %H:%M:%S"),
@@ -133,7 +133,7 @@ class mrp_production(osv.osv):
                 vals1 = {
                     'product_id' : line.product_id.id,
                     'name' : line.product_id.name,
-                    'product_qty' : line.product_qty or 0.00,
+                    'product_qty' : production.product_qty * line.product_qty or 0.00,
                     'product_uom' : line.product_id.uom_id and line.product_id.uom_id.id or False,
                     'production_id' : production.id
                 }

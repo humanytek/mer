@@ -48,7 +48,7 @@ Details:
         # Data
         
         # Views
-        'view/mrp_location_employees_view.xml',
+        #'view/mrp_location_employees_view.xml',
         
         # Other views
         

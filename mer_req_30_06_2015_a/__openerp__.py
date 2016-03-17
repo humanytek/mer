@@ -39,7 +39,7 @@ Details:
         'base',
         'mrp',
         'mrp_operations',
-        'hr'
+        'hr',
     ],
     'data': [
         # Security and groups

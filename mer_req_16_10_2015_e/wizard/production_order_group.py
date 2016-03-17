@@ -43,8 +43,10 @@ class production_order_group_mer(osv.osv_memory):
         
     # 12/10/2015 (felix) Merge the manufacturing orders
     def merge_orders(self, cr, uid, ids, context=None):
+        
         if context is None:
-            context = {}        
+            context = {}
+            
         # 12/10/2015 (felix) Checking if: 
         # the products are equals
         # bill of materials are equals
@@ -53,17 +55,22 @@ class production_order_group_mer(osv.osv_memory):
         # Raw Materials Location and Finished Products Location are equals
         obj_mrp_production = self.pool.get('mrp.production')
         if 'active_ids' in context:
+            array_dat = []
             array_all_mrp = []
             for item in context['active_ids']:
                 state = obj_mrp_production.browse(cr, uid, item, context)['state']
-                if state <> 'draft':
-                    raise osv.except_osv(_('Warning!'), _('Please the manufacturing orders must be in state New.'))
+                
+                # 17/03/2016 (felix) Add the state "confirmed"
+                if state not in ['draft','confirmed']:
+                    raise osv.except_osv(_('Warning!'), _('Please the manufacturing orders must be in state New or Awaiting Raw Materials.'))
+                
                 product_id = obj_mrp_production.browse(cr, uid, item, context)['product_id'].id
                 bom_id = obj_mrp_production.browse(cr, uid, item, context)['bom_id'].id
                 turn_id = obj_mrp_production.browse(cr, uid, item, context)['turn_id'].id
                 machine_id = obj_mrp_production.browse(cr, uid, item, context)['machine_id'].id
                 location_src_id = obj_mrp_production.browse(cr, uid, item, context)['location_src_id'].id
                 location_dest_id = obj_mrp_production.browse(cr, uid, item, context)['location_dest_id'].id
+                
                 array_dat = [product_id, bom_id, turn_id, machine_id, location_src_id, location_dest_id]
                 array_all_mrp.append(array_dat)
                 
@@ -78,9 +85,11 @@ class production_order_group_mer(osv.osv_memory):
             origin = ''
             product_qty = 0
             for item in context['active_ids']:
+                                
                 if obj_mrp_production.browse(cr, uid, item, context)['origin']:
                     origin += str(obj_mrp_production.browse(cr, uid, item, context)['origin'])+'; '
                 product_qty += obj_mrp_production.browse(cr, uid, item, context)['product_qty']
+                
                 dic_mrp = {
                     'state': 'draft',
                     'product_id': obj_mrp_production.browse(cr, uid, item, context)['product_id'].id,
@@ -116,6 +125,7 @@ class production_order_group_mer(osv.osv_memory):
             array_schedule_prod = []
             
             for m in obj_bom_line.browse(cr, uid, src_bom_line, context):
+                
                 dic_mrp_line = {
                     'origin': dic_mrp['origin'],
                     'product_uom': dic_mrp['product_uom'],
@@ -135,7 +145,7 @@ class production_order_group_mer(osv.osv_memory):
                     'raw_material_production_id': new_mrp,
                 }
                 array_mrp_lines.append(dic_mrp_line)
-                obj_stock_move.write(cr, uid, m.id, {'state':'cancel'}, context)
+                #obj_stock_move.write(cr, uid, [m.id], {'state':'cancel'}, context)
                 
                 # Read and get values to put them into mrp_production_product_line
                 values_mrp_production_product_line = {
@@ -146,8 +156,8 @@ class production_order_group_mer(osv.osv_memory):
                     'product_uom': dic_mrp['product_uom'],
                     'name': m.product_id.name,
                 }
-                array_schedule_prod.append(values_mrp_production_product_line)
-                
+                #array_schedule_prod.append(values_mrp_production_product_line)
+            
             # Load move_line
             #for a in array_mrp_lines:
             #    obj_stock_move.create(cr, uid, a, context)
