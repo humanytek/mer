@@ -20,7 +20,7 @@
 ##############################################################################
 {
     'name': 'Mercurio: Force as required field Period',
-    'version': '0.1',
+    'version': '1.2',
     'sequence': 1,
     'category': 'Custom',
     'complexity': 'easy',

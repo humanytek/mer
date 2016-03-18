@@ -20,7 +20,7 @@
 ##############################################################################
 {
     'name': 'Mercurio: Report by Machine',
-    'version': '0.1',
+    'version': '1.0',
     'sequence': 1,
     'category': 'Custom',
     'complexity': 'easy',

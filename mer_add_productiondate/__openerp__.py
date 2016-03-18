@@ -20,7 +20,7 @@
 ##############################################################################
 {
     'name': 'Mercurio: Add a date field in wizard of production',
-    'version': '0.1',
+    'version': '1.2',
     'sequence': 1,
     'category': 'Custom',
     'complexity': 'easy',

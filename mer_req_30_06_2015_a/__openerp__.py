@@ -20,7 +20,7 @@
 ##############################################################################
 {
     'name': 'Mercurio: req_30_06_2015_a',
-    'version': '0.1',
+    'version': '1.5',
     'sequence': 1,
     'category': 'Custom',
     'complexity': 'easy',

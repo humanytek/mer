@@ -20,7 +20,7 @@
 ##############################################################################
 {
     'name': 'Mercurio: Report Location of Employees',
-    'version': '0.1',
+    'version': '1.0',
     'sequence': 1,
     'category': 'Custom',
     'complexity': 'easy',
@@ -48,7 +48,7 @@ Details:
         # Data
         
         # Views
-        #'view/mrp_location_employees_view.xml',
+        'view/mrp_location_employees_view.xml',
         
         # Other views
         

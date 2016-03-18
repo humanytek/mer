@@ -20,7 +20,7 @@
 ##############################################################################
 {
     'name': 'Mercurio: Process of Quality',
-    'version': '0.1',
+    'version': '1.3',
     'sequence': 1,
     'category': 'Custom',
     'complexity': 'easy',
