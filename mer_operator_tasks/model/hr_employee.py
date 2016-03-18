@@ -24,7 +24,7 @@ from openerp.osv import fields, osv
 from openerp.tools.translate import _
 import openerp.addons.decimal_precision as dp
 
-class mrp_hr_employee_mer(osv.osv_memory):
+class mrp_hr_employee_mer(osv.osv):
 
     _inherit = 'hr.employee'
     _description = 'HR Employee object'

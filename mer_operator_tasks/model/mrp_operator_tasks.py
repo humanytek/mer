@@ -24,7 +24,7 @@ from openerp.osv import fields, osv
 from openerp.tools.translate import _
 import openerp.addons.decimal_precision as dp
 
-class mrp_operator_tasks_mer(osv.osv_memory):
+class mrp_operator_tasks_mer(osv.osv):
 
     _name = 'mrp.operator.tasks'
     _description = 'Tasks of operators'
