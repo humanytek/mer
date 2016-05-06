@@ -55,7 +55,7 @@ class mrp_product_produce_mer(osv.osv_memory):
         pw_less = weight_net - pw
         if weight > pw_plus:
             raise osv.except_osv(_('Warning!'), _('The weight is superior than 20 percent permitted.'))
-        if weight < pw_less:
+        if weight < pw_less and weight != 0:
             raise osv.except_osv(_('Warning!'), _('The weight is less than 20 percent permitted.'))
         return True
         
