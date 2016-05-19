@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+ 	<record id="view_personal_report_graph" model="ir.ui.view">
+         <field name="name">personal.report.graph</field>
+         <field name="model">personal.report</field>
+         <field name="arch" type="xml">
+             <graph string="Production Analysis" type="pivot" stacked="True">
+                 <field name="product_id" type="row"/>
+<!-- 				 <field name="operator_id" type="row"/> -->
+				 <field name="date" interval="month" type="col"/>
+				 <field name="turn_id" type="col"/>
+				 <field name="qty_p" type="measure"/>
+				 <field name="qty_s" type="measure"/>
+                 <field name="weight_net" type="measure"/>
+                 <field name="machine_id" type="col"/> 
+             </graph>
+         </field>
+    </record>
+    
+    <record model="ir.ui.view" id="view_personal_report_tree">
+            <field name="name">personal.report.tree</field>
+            <field name="model">personal.report</field>
+            <field name="arch" type="xml">
+                <tree string="Production Analysis" create="false">
+                    <field name="operator_id"/>
+                    <field name="date"/>
+                    <field name="turn_id"/>
+                    <field name="product_id"/>
+                    <field name="qty_p"/>
+                    <field name="qty_s"/>
+	                 <field name="weight_net"/>
+	                 <field name="machine_id"/> 
+	                </tree>
+            </field>
+        </record>
+    
+    <record id="view_order_personal_search" model="ir.ui.view">
+        <field name="name">personal.report.search</field>
+        <field name="model">personal.report</field>
+        <field name="arch" type="xml">
+            <search string="Producation Analysis">
+                <field name="product_id" />
+            </search>
+        </field>
+    </record>
+    
+    <record id="filter_personal_report_product" model="ir.filters">
+        <field name="name">By Product</field>
+        <field name="model_id">personal.report</field>
+        <field name="user_id" eval="False"/>
+        <field name="context">{'group_by': ['product_id']}</field>
+    </record>
+    
+    <record id="filter_personal_report_turno" model="ir.filters">
+        <field name="name">By Turno</field>
+        <field name="model_id">personal.report</field>
+        <field name="user_id" eval="False"/>
+        <field name="context">{'group_by': ['turn_id']}</field>
+    </record>
+    
+    <record id="filter_personal_report_operador" model="ir.filters">
+        <field name="name">By Operador</field>
+        <field name="model_id">personal.report</field>
+        <field name="user_id" eval="False"/>
+        <field name="context">{'group_by': ['operator_id']}</field>
+    </record>
+    
+    <record id="filter_personal_report_machine" model="ir.filters">
+        <field name="name">By Machine</field>
+        <field name="model_id">personal.report</field>
+        <field name="user_id" eval="False"/>
+        <field name="context">{'group_by': ['machine_id']}</field>
+    </record>
+    
+    <record id="filter_personal_report_date" model="ir.filters">
+        <field name="name">By Date</field>
+        <field name="model_id">personal.report</field>
+        <field name="user_id" eval="False"/>
+        <field name="context">{'group_by': ['date']}</field>
+    </record>
+    
+    <record id="action_personal_report_all" model="ir.actions.act_window">
+        <field name="name">Reporte de Personal</field>
+        <field name="res_model">personal.report</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">list,graph</field>
+        <field name="search_view_id" ref="view_order_personal_search"/>
+        <field name="view_id" ref="view_personal_report_graph"/>
+        <field name="context">{}</field>
+    </record>
+
+	<menuitem action="action_personal_report_all" id="menu_report_de_personal" name="Reporte de Personal " parent="hmtk_manufact_report.menu_mrp_manufacturing_reports" />
+</data>
+</openerp>

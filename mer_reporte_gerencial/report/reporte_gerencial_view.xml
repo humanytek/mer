@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+	<record model="ir.ui.view" id="product_product_form_inherit">
+            <field name="name">product.product.form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='Sales']" position="after">
+                <page string='Indicators for Report'>
+                    <field name="indicator_ids">
+                    	<tree string="Indicators" editable="bottom">
+                                <field name="name"/>
+                                <field name="pgr"/>
+                                <field name="real"/>
+                                <field name="percent"/> 
+                         </tree>
+                    </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+		<record id="view_gerencial_report_graph" model="ir.ui.view">
+	         <field name="name">mrp.management.report.graph</field>
+	         <field name="model">mrp.management.report</field>
+	         <field name="arch" type="xml">
+	             <graph string="Management Analysis" type="pivot" stacked="True">
+	             	<field name="product_id" type="row"/>
+<!-- 					<field name="turn_id" type="col"/> -->
+					<field name="indicator" type="row"/>
+					<field name="pgr" type="measure"/>
+					<field name="real" type="measure"/>
+					<field name="percent" type="measure"/>
+				</graph>
+	         </field>
+	    </record>
+		    
+		<record id="action_gerencial_report_all" model="ir.actions.act_window">
+	        <field name="name">Reporte Gerencial</field>
+	        <field name="res_model">mrp.management.report</field>
+	        <field name="view_type">form</field>
+	        <field name="view_mode">graph</field>
+	        <field name="view_id" ref="view_gerencial_report_graph"/>
+	        <field name="context">{}</field>
+	    </record>
+
+	<menuitem action="action_gerencial_report_all" id="menu_reporte_gerencial" name="Reporte Gerencial " parent="hmtk_manufact_report.menu_mrp_manufacturing_reports" />
+	</data>    
+	
+</openerp>

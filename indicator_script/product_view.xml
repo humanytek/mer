@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="product_product_form_inherit_for_script">
+            <field name="name">product.product.form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="mer_reporte_gerencial.product_product_form_inherit" />
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='Indicators for Report']" position="inside">
+                	<button name="do_run_script" string="Run" type="object" />
+                </xpath>
+            </field>
+        </record>
+             
+    </data>
+</openerp>

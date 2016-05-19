@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="stock_location_form_inherit">
+            <field name="name">Stock.location</field>
+            <field name="model">stock.location</field>
+            <field name="inherit_id" ref="stock.view_location_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="first_condition"/>
+                    <field name="second_condition"/>
+                </xpath>
+            </field>
+        </record>
+             
+    </data>
+</openerp>
