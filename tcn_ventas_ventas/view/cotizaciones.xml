@@ -14,7 +14,7 @@
                 <xpath expr="//page[@string='Order Lines']/field[@name='order_line']/form[@string='Sales Order Lines']/group/group/field[@name='product_id']" position="replace">
 	                <field name="product_id"
 	                	  invisible="0"
-     	  	              domain="[('product_manager_id', '=', uid)]"
+     	  	              domain="['|',('product_manager_id', '=', uid),('product_manager_id', '=', False)]"
 	                      context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom}"
 	                      groups="base.group_user"
 	                      on_change="product_id_change(parent.pricelist_id, product_id, product_uom_qty, False, product_uos_qty, False, name, parent.partner_id, False, True, parent.date_order, False, parent.fiscal_position, False, context)"/>
