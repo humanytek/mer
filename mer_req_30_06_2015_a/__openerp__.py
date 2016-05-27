@@ -20,7 +20,7 @@
 ##############################################################################
 {
     'name': 'Mercurio: req_30_06_2015_a',
-    'version': '1.5',
+    'version': '1.6',
     'sequence': 1,
     'category': 'Custom',
     'complexity': 'easy',
@@ -43,16 +43,16 @@ Details:
     ],
     'data': [
         # Security and groups
-    
+
         # Data
-        
+
         # Views
-        
+
         # Other views
-        
+
         # Wizard
         'wizard/wizard_produce.xml',
-        
+
         # Reports
     ],
     'demo_xml': [],

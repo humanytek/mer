@@ -31,17 +31,19 @@ class mrp_product_produce_mer(osv.osv_memory):
     _inherit = 'mrp.product.produce'
     _description = 'Product Produce'
     _columns = {
-        'location_src_id': fields.many2one('stock.location', 
+        # 27/05/2016 (moises) Default 0 to qty and weight
+        'product_qty': fields.float('Quantity (in default UoM)', default="0"),
+        'location_src_id': fields.many2one('stock.location',
             'Raw Materials Location'),
-        'location_dest_id': fields.many2one('stock.location', 
+        'location_dest_id': fields.many2one('stock.location',
             'Finished Products Location'),
-        'weight': fields.float('Weight', digits_compute=dp.get_precision('Product Unit of Measure')),
-        'operators_ids': fields.one2many('mrp.product.produce.operators', 
+        'weight': fields.float('Weight', default="0"),
+        'operators_ids': fields.one2many('mrp.product.produce.operators',
             'operators_id', 'Operators'),
         'main_turn_id': fields.many2one('resource.calendar', type='many2one'),
         'machine_id': fields.many2one('mrp.workcenter', type='many2one'),
     }
-    
+
     # 19/10/2015 (felix) Method to check weight of the product
     def on_change_weight(self, cr, uid, ids, weight, product_id, context=None):
         obj_product = self.pool.get('product.product')
@@ -58,7 +60,7 @@ class mrp_product_produce_mer(osv.osv_memory):
         if weight < pw_less and weight != 0:
             raise osv.except_osv(_('Warning!'), _('The weight is less than 20 percent permitted.'))
         return True
-        
+
     # 26/02/2016 (felix) Original method to send the destiny location
     # 09/03/2016 (felix) Added writing in mrp_resume_report object
     # 11/03/2016 (felix) Added writing in mrp_resume_report_operators object
@@ -68,7 +70,7 @@ class mrp_product_produce_mer(osv.osv_memory):
         data = self.browse(cr, uid, ids[0], context=context)
         self.pool.get('mrp.production').action_produce(cr, uid, production_id,
             data.product_qty, data.mode, data.location_dest_id, data, context=context)
-            
+
         # 09/03/2016 (felix) Writing in mrp_resume_report
         obj_mrp_resume_report = self.pool.get('mrp.resume.report')
         if context and context.get('active_id'):
@@ -83,10 +85,13 @@ class mrp_product_produce_mer(osv.osv_memory):
             machine_id = prod.machine_id.id
             production_date = data.production_date
             weight = data.weight
-            
+            # 27/05/2016 (moises) Prevent incorrect value to weight
+            if weight <= 0:
+                raise osv.except_osv(_('Warning!'), _('Please provide proper weight.'))
+
             for q in data.quality_ids:
                 qty_3 = q.quantity
-            
+
             values = {
                 'product_id': product_id,
                 'machine_id': machine_id,
@@ -98,7 +103,7 @@ class mrp_product_produce_mer(osv.osv_memory):
                 'mrp_id': mrp_id
             }
             obj_mrp_resume_report.create(cr, uid, values, context)
-            
+
             # 11/03/2016 (felix) Writing in mrp_resume_report_operators
             data_employees = []
             values_employess = {}
@@ -108,31 +113,31 @@ class mrp_product_produce_mer(osv.osv_memory):
                     'machine_id': machine_id,
                     'production_date': production_date,
                     'operator_id': e.operator_id.id,
-                    'hours': e.hours                    
+                    'hours': e.hours
                 }
                 data_employees.append(values_employees)
-                
+
             for d in data_employees:
                 obj_location_employees.create(cr, uid, d, context)
-            
+
         return {}
-    
+
     # 03/03/2016 (felix) Get value of "turn_id" field
     def _get_turn_id(self, cr, uid, context=None):
         prod = False
         if context and context.get('active_id'):
-            prod = self.pool.get('mrp.production').browse(cr, uid, 
+            prod = self.pool.get('mrp.production').browse(cr, uid,
                         context['active_id'], context=context)
         return prod.turn_id.id or False
-        
+
     # 03/03/2016 (felix) Get value of "machine_id" field
     def _get_machine_id(self, cr, uid, context=None):
         prod = False
         if context and context.get('active_id'):
-            prod = self.pool.get('mrp.production').browse(cr, uid, 
+            prod = self.pool.get('mrp.production').browse(cr, uid,
                         context['active_id'], context=context)
         return prod.machine_id.id or False
-        
+
     _defaults = {
         'main_turn_id': _get_turn_id,
         'machine_id': _get_machine_id

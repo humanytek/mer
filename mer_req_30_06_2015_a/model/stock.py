@@ -36,7 +36,7 @@ class mrp_production_mer(osv.osv):
 
     _inherit = 'stock.move'
     _description = 'Stock move'
-    
+
     # 27/02/2016 (felix) Original method in order to get location_dest_id
     def action_consume(self, cr, uid, ids, product_qty, location_id=False, location_dest_id=False, restrict_lot_id=False, restrict_partner_id=False,
                        consumed_for=False, context=None):
@@ -82,11 +82,11 @@ class mrp_production_mer(osv.osv):
                     'consumed_for': consumed_for}
             if location_id:
                 vals.update({'location_id': location_id})
-            
+
             # 27/02/2016 (felix) Add location_dest_id field
             if location_dest_id:
                 vals.update({'location_dest_id': location_dest_id})
-                
+
             self.write(cr, uid, [move.id], vals, context=context)
         # Original moves will be the quantities consumed, so they need to be done
         self.action_done(cr, uid, ids2, context=context)
