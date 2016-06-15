@@ -16,33 +16,65 @@ msgstr ""
 "X-Launchpad-Export-Date: 2014-10-07 06:57+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
-#. module: mer_report_x_machine
-#: view:mrp.product.produce:0
+#. module: mer_report_production_resume
+#: view:mrp.resume.report:0
+msgid "Production date"
+msgstr "Fecha de producción"
+
+#. module: mer_report_production_resume
+#: view:mrp.resume.report:0
 msgid "Product"
 msgstr "Producto"
 
-#. module: mer_report_x_machine
-#: view:mrp.product.produce:0
-msgid "Product Quantity"
-msgstr "Cantidad"
+#. module: mer_report_production_resume
+#: view:mrp.resume.report:0
+msgid "Machine"
+msgstr "Máquina"
 
-#. module: mer_report_x_machine
-#: view:mrp.product.produce:0
-msgid "Turn"
-msgstr "Turno"
+#. module: mer_report_production_resume
+#: view:mrp.resume.report:0
+msgid "First Quantity"
+msgstr "Cantidad de primera"
 
-#. module: mer_report_x_machine
-#: view:mrp.product.produce:0
-msgid "Production Date"
-msgstr "Fecha de producción"
+#. module: mer_report_production_resume
+#: view:mrp.resume.report:0
+msgid "Rejected Quantity"
+msgstr "Cantidad rechazada"
 
-#. module: mer_report_x_machine
-#: view:mrp.product.produce:0
+#. module: mer_report_production_resume
+#: view:mrp.resume.report:0
+msgid "Total Quantity"
+msgstr "Cantidad total"
+
+#. module: mer_report_production_resume
+#: view:mrp.resume.report:0
+msgid "Total Rejected"
+msgstr "Total rechazado"
+
+#. module: mer_report_production_resume
+#: view:mrp.resume.report:0
 msgid "Weight"
 msgstr "Peso"
 
-#. module: mer_report_x_machine
-#: view:mrp.product.produce:0
-msgid "Operator"
-msgstr "Operador"
+#. module: mer_report_production_resume
+#: view:mrp.resume.report:0
+msgid "First Weight"
+msgstr "Peso de primera"
+
+#. module: mer_report_production_resume
+#: view:mrp.resume.report:0
+msgid "Weight Rejected"
+msgstr "Peso rechazado"
+
+#. module: mer_report_production_resume
+#: view:mrp.resume.report:0
+msgid "%% Rejected"
+msgstr "%% Rechazado"
+
+#. module: mer_report_production_resume
+#: view:mrp.resume.report:0
+#: model:ir.actions.act_window,help:action_production_resume
+#: model:ir.ui.menu,name:menu_production_resume
+msgid "Production resume"
+msgstr "Resumen de producción"
 

@@ -27,6 +27,11 @@
             <field name="arch" type="xml">
                 <search string="Location of employees">
                     <field name="operator_id" string="Operator"/>
+                    <field name="machine_id" string="Machine"/>
+                    <separator />
+                    <filter string="Machine" domain="[]" context="{'group_by':'machine_id'}"/>
+                    <filter string="Production date" domain="[]" context="{'group_by':'production_date'}"/>
+                    <filter string="Operator" domain="[]" context="{'group_by':'operator_id'}"/>
                 </search>
             </field>
         </record>

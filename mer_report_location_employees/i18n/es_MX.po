@@ -16,33 +16,30 @@ msgstr ""
 "X-Launchpad-Export-Date: 2014-10-07 06:57+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
-#. module: mer_report_x_machine
-#: view:mrp.product.produce:0
-msgid "Product"
-msgstr "Producto"
+#. module: mer_report_location_employees
+#: view:mrp.resume.report.operators:0
+msgid "Machine"
+msgstr "Máquina"
 
-#. module: mer_report_x_machine
-#: view:mrp.product.produce:0
-msgid "Product Quantity"
-msgstr "Cantidad"
-
-#. module: mer_report_x_machine
-#: view:mrp.product.produce:0
-msgid "Turn"
-msgstr "Turno"
-
-#. module: mer_report_x_machine
-#: view:mrp.product.produce:0
-msgid "Production Date"
-msgstr "Fecha de producción"
-
-#. module: mer_report_x_machine
-#: view:mrp.product.produce:0
-msgid "Weight"
-msgstr "Peso"
-
-#. module: mer_report_x_machine
-#: view:mrp.product.produce:0
+#. module: mer_report_location_employees
+#: view:mrp.resume.report.operators:0
 msgid "Operator"
 msgstr "Operador"
+
+#. module: mer_report_location_employees
+#: view:mrp.resume.report.operators:0
+msgid "Production date"
+msgstr "Fecha de producción"
+
+#. module: mer_report_location_employees
+#: view:mrp.resume.report.operators:0
+msgid "Hours"
+msgstr "Horas"
+
+#. module: mer_report_location_employees
+#: view:mrp.resume.report.operators:0
+#: model:ir.actions.act_window,help:action_location_employees
+#: model:ir.ui.menu,name:menu_report_location_employees
+msgid "Location of employees"
+msgstr "Ubicación de empleados"
 

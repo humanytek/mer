@@ -19,7 +19,20 @@
 #
 ##############################################################################
 
-from openerp import models, fields
-class stock_production_lot(models.Model):
-    _inherit=['stock.production.lot']
-    ref = fields.Date('Internal Reference', help="Internal reference number in case it differs from the manufacturer's serial number")
+from openerp.osv import fields, osv
+from openerp.tools.translate import _
+import logging
+_logger = logging.getLogger(__name__)
+
+class stock_quality_mer(osv.osv):
+
+    _name = 'stock.quality'
+    _description = 'Process of quality'
+    _columns = {
+        'name': fields.char('Name', size=2048, required=True),
+        'description': fields.text('Description', size=10000),
+        'quality_in_lot_ids': fields.one2many('stock.production.lot.quality', 
+            'quality_id', 'Quality in serial number')
+    }
+
+stock_quality_mer()

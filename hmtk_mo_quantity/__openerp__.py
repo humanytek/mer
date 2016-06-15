@@ -3,7 +3,7 @@
 #
 #    Copyright (c) 2013 BroadTech IT Solutions.
 #    (http://wwww.broadtech-innovations.com)
-#    contact@boradtech-innovations.com
+#    contact@broadtech-innovations.com
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -21,26 +21,23 @@
 ##############################################################################
 
 {
-    'name': 'Duplicate Products',
-    'version': '1.1',
-    'category': 'Product Management',
-    'summary': 'Inherited for adding product variants',
+    'name': 'Manufacturing Order Customization',
+    'version': '1.5',
+    'category': 'Manufacturing Order Customization',
+    'summary': 'Manufacturing Order Quantity Calculation',
     'description': """
-Add Product Variants.
+Manage Manufacturing Order Quantity.
 =======================
-
+This application will change the manufacturing order quantity with respect to available product quantity
 
     """,
     'author': 'Broadtech-innovations',
-    'depends': ['product'],
+    'depends': ['mrp', 'procurement', 'procurement_jit'],
     'website': 'http://wwww.broadtech-innovations.com',
-    'data': [
-        ],
-    'qweb': [],
+    'data': [ ],
+    'qweb': [ ],
     'installable': True,
     'auto_install': False,
 }
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
-    
-
