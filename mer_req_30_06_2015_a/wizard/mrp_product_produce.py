@@ -103,6 +103,11 @@ class mrp_product_produce_mer(osv.osv_memory):
                                      _('La cantidad fijada no corresponde a' +
                                        'las filas ingresadas'))
 
+            # 2016-06-15 Required at least one operator
+            if len(data.operators_ids) == 0:
+                raise osv.except_osv(_('Warning!'),
+                                     _('Debe haber al menos un operador'))
+
             for q in data.quality_ids:
                 qty_3 = q.quantity
 
