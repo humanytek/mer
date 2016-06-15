@@ -89,6 +89,15 @@ class mrp_product_produce_mer(osv.osv_memory):
             if weight <= 0:
                 raise osv.except_osv(_('Warning!'), _('Please provide proper weight.'))
 
+            # 06/14/2016 Match product_qty and quality_ids.quantity
+            quality_sum = 0
+            for r in data.quality_ids:
+                quality_sum += r.quantity
+            if quality_sum != data.product_qty:
+                raise osv.except_osv(_('Warning!'),
+                                     _('La cantidad fijada no corresponde a las ' +
+                                       'filas ingresadas'))
+
             for q in data.quality_ids:
                 qty_3 = q.quantity
 
