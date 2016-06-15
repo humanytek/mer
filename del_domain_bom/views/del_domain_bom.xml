@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+  <data>
+        <record model="ir.ui.view" id="del_domain_bom">
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+                <field name="bom_id" position="attributes">
+                    <attribute name="domain"></attribute>
+                </field>
+            </field>
+        </record>
+  </data>
+</openerp>
