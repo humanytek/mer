@@ -85,15 +85,18 @@ class mrp_product_produce_mer(osv.osv_memory):
 
         # 06/14/2016 Match product_qty and quality_ids.quantity
         quality_sum = 0
+        rejected_qty = 0
         for r in data.quality_ids:
             quality_sum += r.quantity
+            if r.review == 'r':
+                rejected_qty += r.quantity
         if quality_sum != data.product_qty:
             raise osv.except_osv(_('Warning!'),
                                  _('La cantidad fijada no corresponde a' +
                                    'las filas ingresadas'))
 
         self.pool.get('mrp.production').action_produce(cr, uid, production_id,
-            data.product_qty, data.mode, data.location_dest_id, data, context=context)
+            data.product_qty - rejected_qty, data.mode, data.location_dest_id, data, context=context)
 
         # 09/03/2016 (felix) Writing in mrp_resume_report
         obj_mrp_resume_report = self.pool.get('mrp.resume.report')
