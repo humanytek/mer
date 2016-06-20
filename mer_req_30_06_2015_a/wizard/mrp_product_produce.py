@@ -68,6 +68,30 @@ class mrp_product_produce_mer(osv.osv_memory):
         production_id = context.get('active_id', False)
         assert production_id, "Production Id should be specified in context as a Active ID."
         data = self.browse(cr, uid, ids[0], context=context)
+
+        # 27/05/2016 (moises) Prevent incorrect value to weight
+        if data.weight <= 0:
+            raise osv.except_osv(_('Warning!'), _('Please provide proper weight.'))
+
+        # 2016-06-15 (moises) Prevent incorrect value to quantity
+        if data.product_qty <= 0:
+            raise osv.except_osv(_('Warning!'), _('Please provide proper' +
+                                                  'quantity.'))
+
+        # 2016-06-15 Required at least one operator
+        if len(data.operators_ids) == 0:
+            raise osv.except_osv(_('Warning!'),
+                                 _('Debe haber al menos un operador'))
+
+        # 06/14/2016 Match product_qty and quality_ids.quantity
+        quality_sum = 0
+        for r in data.quality_ids:
+            quality_sum += r.quantity
+        if quality_sum != data.product_qty:
+            raise osv.except_osv(_('Warning!'),
+                                 _('La cantidad fijada no corresponde a' +
+                                   'las filas ingresadas'))
+
         self.pool.get('mrp.production').action_produce(cr, uid, production_id,
             data.product_qty, data.mode, data.location_dest_id, data, context=context)
 
@@ -85,28 +109,6 @@ class mrp_product_produce_mer(osv.osv_memory):
             machine_id = prod.machine_id.id
             production_date = data.production_date
             weight = data.weight
-            # 27/05/2016 (moises) Prevent incorrect value to weight
-            if weight <= 0:
-                raise osv.except_osv(_('Warning!'), _('Please provide proper weight.'))
-
-            # 2016-06-15 (moises) Prevent incorrect value to quantity
-            if data.product_qty <= 0:
-                raise osv.except_osv(_('Warning!'), _('Please provide proper' +
-                                                      'quantity.'))
-
-            # 06/14/2016 Match product_qty and quality_ids.quantity
-            quality_sum = 0
-            for r in data.quality_ids:
-                quality_sum += r.quantity
-            if quality_sum != data.product_qty:
-                raise osv.except_osv(_('Warning!'),
-                                     _('La cantidad fijada no corresponde a' +
-                                       'las filas ingresadas'))
-
-            # 2016-06-15 Required at least one operator
-            if len(data.operators_ids) == 0:
-                raise osv.except_osv(_('Warning!'),
-                                     _('Debe haber al menos un operador'))
 
             for q in data.quality_ids:
                 qty_3 = q.quantity
