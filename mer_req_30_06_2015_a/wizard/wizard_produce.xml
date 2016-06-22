@@ -30,9 +30,7 @@
                 <xpath expr="//form/group[1]" position="after">
                     <group>
                         <group>
-                            <!-- 26/02/2016 (felix) Ocultar, por previo análisis reciente
                             <field name="location_src_id" string="Raw Materials Location" domain="[('usage', '=', 'internal')]" required="1"/>
-                            -->
                             <field name="location_dest_id" string="Finished Products Location" domain="[('usage', '=', 'internal')]" required="1"/>
                         </group>
                         <!-- 19/10/2015 (felix) Add field: "weight" -->
