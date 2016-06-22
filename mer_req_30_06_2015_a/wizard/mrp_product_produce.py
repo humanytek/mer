@@ -84,15 +84,11 @@ class mrp_product_produce_mer(osv.osv_memory):
                                  _('Debe haber al menos un operador'))
 
         # 06/14/2016 Match product_qty and quality_ids.quantity
-        quality_sum = 0
-        rejected_qty = 0
-        for r in data.quality_ids:
-            quality_sum += r.quantity
-            if r.review == 'r':
-                rejected_qty += r.quantity
+        quality_sum = sum(r.quantity for r in data.quality_ids)
+        rejected_qty = sum(r.quantity for r in data.quality_ids if r.review == 'r')
         if quality_sum != data.product_qty:
             raise osv.except_osv(_('Warning!'),
-                                 _('La cantidad fijada no corresponde a' +
+                                 _('La cantidad fijada no corresponde a ' +
                                    'las filas ingresadas'))
 
         self.pool.get('mrp.production').action_produce(cr, uid, production_id,
