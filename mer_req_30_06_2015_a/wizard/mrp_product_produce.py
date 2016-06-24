@@ -37,7 +37,7 @@ class mrp_product_produce_mer(osv.osv_memory):
             'Raw Materials Location'),
         'location_dest_id': fields.many2one('stock.location',
             'Finished Products Location'),
-        'weight': fields.float('Weight', default="0"),
+        'weight': fields.float('Weight', default="-1"),
         'operators_ids': fields.one2many('mrp.product.produce.operators',
             'operators_id', 'Operators'),
         'main_turn_id': fields.many2one('resource.calendar', type='many2one'),
@@ -57,8 +57,10 @@ class mrp_product_produce_mer(osv.osv_memory):
         pw_less = weight_net - pw
         if weight > pw_plus:
             raise osv.except_osv(_('Warning!'), _('The weight is superior than 20 percent permitted.'))
-        if weight < pw_less and weight != 0:
+        if weight < pw_less and weight != -1:
             raise osv.except_osv(_('Warning!'), _('The weight is less than 20 percent permitted.'))
+        if weight == 0:
+            raise osv.except_osv(_('Warning!'), _('The weight is 0.'))
         return True
 
     # 26/02/2016 (felix) Original method to send the destiny location
@@ -70,7 +72,7 @@ class mrp_product_produce_mer(osv.osv_memory):
         data = self.browse(cr, uid, ids[0], context=context)
 
         # 27/05/2016 (moises) Prevent incorrect value to weight
-        if data.weight <= 0:
+        if data.weight < 0:
             raise osv.except_osv(_('Warning!'), _('Please provide proper weight.'))
 
         # 2016-06-15 (moises) Prevent incorrect value to quantity
