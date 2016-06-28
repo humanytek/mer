@@ -15,8 +15,8 @@ class ReverseLimit(models.Model):
             self.quantity = self.max_qty
             return {
                 'warning': {
-                    'title': "Invalid quantity",
-                    'message': "The quantity should not exceed the transferred"
+                    'title': "Cantidad invalida",
+                    'message': "La cantidad no debe exceder el monto transferido"
                 }
             }
 
