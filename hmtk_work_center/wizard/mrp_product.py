@@ -24,14 +24,14 @@ from openerp.osv import fields, osv
 from openerp.tools.translate import _
 import openerp.addons.decimal_precision as dp
 
-class mrp_product_produce_mer(osv.osv_memory):
+class mrp_product_produce_mer(osv.osv):
 
     _inherit = 'mrp.product.produce'
     _description = 'Product Produce'
     _columns = {
         'user_ids': fields.many2many('hr.employee', 'workcenter_employee_rel', 'workcenter_id', 'employee_id', 'Users'),
     }
-    
+
     def default_get(self, cr, uid, fields, context=None):
         res = super(mrp_product_produce_mer, self).default_get(cr, uid, fields, context=context)
         data = self.pool.get('mrp.production').browse(cr, uid, context['active_ids'], context)
